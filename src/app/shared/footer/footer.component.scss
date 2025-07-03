@@ -1,0 +1,16 @@
+footer {
+  a {
+    text-decoration: none;
+    transition: color 0.2s;
+    &:hover {
+      color: #ffc107 !important;
+    }
+  }
+  .fw-semibold {
+    font-size: 1.1rem;
+  }
+  .small {
+    font-size: 0.95rem;
+    color: #bbb;
+  }
+}
