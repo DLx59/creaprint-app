@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -6,6 +6,14 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   imports: [],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HomeComponent {}
+export class HomeComponent {
+  featherOffset = 0;
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    const maxOffset = 200;
+    const scrollY = window.scrollY || window.pageYOffset;
+    this.featherOffset = Math.min(scrollY * 0.4, maxOffset);
+  }
+}

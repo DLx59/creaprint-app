@@ -1,1 +1,59 @@
-
+.main-header {
+  background: rgba(17,17,17,0.98) !important;
+  box-shadow: 0 2px 16px #6f42c122;
+  .navbar-brand {
+    font-family: 'Montserrat', 'Inter', Arial, sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: -1px;
+    .logo-dot {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      background: #6f42c1;
+      border-radius: 50%;
+      margin-right: 8px;
+      box-shadow: 0 2px 8px #6f42c155;
+    }
+  }
+  .nav-link {
+    color: #fff !important;
+    font-weight: 500;
+    font-size: 1.1rem;
+    position: relative;
+    transition: color 0.2s;
+    padding: 0.5rem 0.8rem;
+  }
+  .nav-link.active, .nav-link:hover {
+    color: #6f42c1 !important;
+  }
+  .btn-pink {
+    background: #6f42c1;
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    box-shadow: 0 2px 12px #6f42c133;
+    transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+  }
+  .btn-pink:hover {
+    background: #56318d;
+    color: #fff;
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 6px 24px #6f42c144;
+  }
+  .navbar-toggler {
+    color: #fff;
+    border: none;
+    font-size: 2rem;
+    background: transparent;
+    box-shadow: none;
+  }
+  .navbar-toggler:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #6f42c155;
+  }
+  .collapse.bg-black {
+    background: #111 !important;
+    border-radius: 0 0 1rem 1rem;
+    box-shadow: 0 8px 32px #6f42c122;
+  }
+}
