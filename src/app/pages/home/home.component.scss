@@ -2,10 +2,6 @@
 @import 'bootstrap/scss/variables';
 @import 'bootstrap/scss/mixins';
 
-body, .bg-black {
-  background: #111 !important;
-  color: #fff;
-}
 .hero {
   min-height: 500px;
   background: #111;
@@ -245,5 +241,29 @@ body, .bg-black {
     height: 140px !important;
     top: 2% !important;
     right: 3% !important;
+  }
+}
+
+.services-carousel-section {
+  background: #6f42c1;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+
+@media (max-width: 991px) {
+  .service-card {
+    min-width: 260px;
+    max-width: 320px;
+    min-height: 340px;
+    padding: 1.5rem 1rem 1.5rem 1rem;
+  }
+}
+@media (max-width: 600px) {
+  .service-card {
+    min-width: 180px;
+    max-width: 220px;
+    min-height: 220px;
+    padding: 1rem 0.5rem 1rem 0.5rem;
   }
 }

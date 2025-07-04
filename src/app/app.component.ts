@@ -1,9 +1,9 @@
 import { Component, inject, effect } from '@angular/core';
 import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
-import { HeaderComponent } from './shared/header/header.component';
-import { FooterComponent } from './shared/footer/footer.component';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { CommonModule, DOCUMENT } from '@angular/common';
+import { HeaderComponent } from './features/shared/components/header/header.component';
+import { FooterComponent } from './features/shared/components/footer/footer.component';
 
 @Component({
   selector: 'app-root',
@@ -24,14 +24,13 @@ import { CommonModule, DOCUMENT } from '@angular/common';
   ]
 })
 export class AppComponent {
-  title = 'creaprint-app';
+  title = 'creaprint';
   showScrollTop = false;
   private router = inject(Router);
   private doc = inject(DOCUMENT);
   private isBrowser = typeof window !== 'undefined';
 
   constructor() {
-    // Gestion du titre dynamique
     effect(() => {
       this.router.events.subscribe(event => {
         if (event instanceof NavigationEnd) {
@@ -40,7 +39,7 @@ export class AppComponent {
           else if (event.urlAfterRedirects === '/contact') pageTitle = 'Contact | Créaprint';
           else if (event.urlAfterRedirects === '/') pageTitle = 'Accueil | Créaprint';
           this.doc.title = pageTitle;
-          // Meta description dynamique (optionnel)
+          
           let metaDesc = this.doc.querySelector('meta[name="description"]');
           if (!metaDesc) {
             metaDesc = this.doc.createElement('meta');
@@ -51,7 +50,7 @@ export class AppComponent {
         }
       });
     });
-    // Gestion du bouton retour en haut (uniquement côté navigateur)
+    
     if (this.isBrowser) {
       window.addEventListener('scroll', () => {
         this.showScrollTop = window.scrollY > 300;

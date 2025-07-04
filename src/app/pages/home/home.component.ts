@@ -1,11 +1,12 @@
 import { Component, HostListener } from '@angular/core';
+import { ServicesCarouselComponent } from '../../features/home/components/services-carousel/services-carousel.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [ServicesCarouselComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss',
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
   featherOffset = 0;

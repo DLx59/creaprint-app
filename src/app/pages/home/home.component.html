@@ -1,5 +1,14 @@
-<!-- HERO AVEC FORMES SVG -->
-<section class="hero position-relative bg-black text-white py-5 overflow-hidden">
+<!-- HERO MODERNE AVEC SVG PLUME -->
+<section class="hero position-relative py-5 overflow-hidden bg-prune text-white">
+  <div class="container position-relative" style="z-index:2;">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-10 col-lg-8 d-flex flex-column align-items-center justify-content-center text-center mx-auto">
+        <h1 class="display-2 fw-bold mb-3">Créaprint, votre expert en identité visuelle</h1>
+        <p class="fs-4 mb-4 text-prune-light">Boostez votre image sur tous supports : logo, packaging, print & web.</p>
+        <a routerLink="/contact" class="btn btn-light btn-lg rounded-pill px-5 fw-bold mt-2">Démarrons la conversation</a>
+      </div>
+    </div>
+    <!-- SVG Plume décorative -->
     <div class="feather-abs" [style.transform]="'translateY(' + featherOffset + 'px)'">
       <svg class="hero-shape-prune" viewBox="400 400 320 320" xmlns="http://www.w3.org/2000/svg">
         <g id="Object">
@@ -7,59 +16,107 @@
         </g>
       </svg>
     </div>
-  <div class="container position-relative" style="z-index:2;">
-    <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 350px;">
-      <h1 class="display-2 fw-bold mb-3">Partenaire de votre activité digitale</h1>
-      <p class="lead mb-4">Pour des sites bien classés, avec du style, et qui engagent les visiteurs.</p>
-      <a routerLink="/contact" class="btn btn-primary btn-lg rounded-pill px-5">Démarrons la conversation</a>
-    </div>
-  </div>
-  <svg class="hero-lines" viewBox="0 0 400 400" fill="none"><path d="M0,100 Q100,200 200,100 T400,100" stroke="#6f42c1" stroke-width="2" fill="none"/><path d="M0,200 Q100,300 200,200 T400,200" stroke="#6f42c1" stroke-width="2" fill="none"/></svg>
-</section>
-
-<!-- EXPERTISES -->
-<section class="expertises bg-black text-white py-5">
-  <div class="container">
-    <div class="row g-4 justify-content-center">
-      <div class="col-md-4 text-center">
-        <div class="icon-expertise mb-3"><i class="bi bi-laptop display-3 text-pink"></i></div>
-        <h3 class="h4 fw-bold mb-2">Conception web</h3>
-        <p class="text-light-50">Une conception web conviviale et professionnelle pour développer votre activité en ligne.</p>
-      </div>
-      <div class="col-md-4 text-center">
-        <div class="icon-expertise mb-3"><i class="bi bi-bar-chart-line display-3 text-blue"></i></div>
-        <h3 class="h4 fw-bold mb-2">Stratégie SEO</h3>
-        <p class="text-light-50">Devenir visible et améliorer votre présence sur les moteurs de recherche.</p>
-      </div>
-      <div class="col-md-4 text-center">
-        <div class="icon-expertise mb-3"><i class="bi bi-palette2 display-3 text-orange"></i></div>
-        <h3 class="h4 fw-bold mb-2">Branding</h3>
-        <p class="text-light-50">Une image créative et valorisante pour votre entreprise sur tous supports.</p>
-      </div>
-    </div>
   </div>
 </section>
 
-<!-- CONVERSATION CTA -->
-<section class="cta-conv bg-black text-white py-5">
+<!-- CARROUSEL DES SERVICES -->
+<app-services-carousel />
+
+<!-- SLOGAN / MISE EN AVANT -->
+<section class="slogan py-3">
   <div class="container text-center">
-    <h2 class="h2 fw-bold mb-0">Aidons plus de prospects à entamer la conversation avec vous.</h2>
+    <h2 class="h2 fw-bold mb-0">Mon savoir-faire et votre confiance, la clé de la réussite de vos projets !</h2>
+    <p class="mb-0">Rapidité, modernité et efficacité au service de votre communication.</p>
+  </div>
+</section>
+
+<!-- PRÉSENTATION / À PROPOS -->
+<section class="presentation py-5">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-7 mb-4 mb-lg-0">
+        <h3 class="h3 fw-bold mb-3">À propos de Créaprint</h3>
+        <p>Fort de plus de 20 ans d'expérience – dont 5 ans en agence de publicité et 10 ans en imprimerie – je mets mon expertise à votre service pour tous vos projets de création graphique et web.</p>
+        <p>Bénéficiez d'un accompagnement global, personnalisé et sur-mesure, que ce soit pour la conception de votre identité visuelle, la réalisation de supports imprimés ou la création de votre site internet.</p>
+        <p>Mes clients proviennent de secteurs variés : découvrez leurs réalisations et laissez-vous inspirer !</p>
+      </div>
+      <div class="col-lg-5 text-center">
+        <img src="assets/img/portrait.jpg" alt="Portrait" class="rounded-circle shadow mb-3" width="120" height="120">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISES / SERVICES -->
+<section class="expertises py-5">
+  <div class="container">
+    <h2 class="h2 fw-bold text-center mb-5">Nos services</h2>
+    <div class="row g-4 justify-content-center">
+      @for (expertise of [
+        {
+          icon: 'bi bi-brush',
+          title: 'Création de logo',
+          desc: 'Logos sur-mesure pour le web et l\'impression. Modernisation et amélioration de logos existants.',
+          price: 'À partir de 180 € HT'
+        },
+        {
+          icon: 'bi bi-megaphone',
+          title: 'Flyers, affiches & annonces presse',
+          desc: 'Conception de supports publicitaires impactants : flyers, affiches, annonces presse, roll-ups…',
+          price: 'À partir de 120 € HT'
+        },
+        {
+          icon: 'bi bi-box-seam',
+          title: 'Packaging',
+          desc: 'Création de boîtes, étuis, tubes, sachets, sets de table, lettrage vitrine et véhicule.',
+          price: 'À partir de 105 € HT'
+        },
+        {
+          icon: 'bi bi-journal-richtext',
+          title: 'Catalogues & magazines',
+          desc: 'De la création à la mise en page, fichiers HD prêts à imprimer.',
+          price: 'À partir de 50 € HT la page A4'
+        },
+        {
+          icon: 'bi bi-globe2',
+          title: 'Site internet, référencement & newsletters',
+          desc: 'Création de sites web personnalisés, optimisés pour le référencement naturel.<br>Conception de newsletters originales et prêtes à l\'envoi.',
+          price: 'À partir de 225 € HT la newsletter'
+        }
+      ]; track expertise.title) {
+        <div class="col-md-4 text-center">
+          <div class="icon-expertise mb-3"><i class="{{expertise.icon}} display-3 text-prune"></i></div>
+          <h3 class="h4 fw-bold mb-2">{{ expertise.title }}</h3>
+          <p [innerHTML]="expertise.desc"></p>
+          <span class="fw-bold">{{ expertise.price }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- CTA / CONTACT -->
+<section class="cta-conv py-5">
+  <div class="container text-center">
+    <h2 class="h2 fw-bold mb-0">Vous souhaitez donner un nouvel élan à votre communication ?</h2>
+    <p class="mb-4">Contactez-moi pour discuter de votre projet et obtenir un devis personnalisé.</p>
+    <a routerLink="/contact" class="btn btn-primary btn-lg rounded-pill px-5">Demander un devis</a>
   </div>
 </section>
 
 <!-- EXPERIENCE + RÉALISATIONS -->
-<section class="experience bg-black text-white py-5">
+<section class="experience py-5">
   <div class="container">
     <div class="row align-items-center mb-5">
       <div class="col-lg-4 mb-4 mb-lg-0">
-        <h3 class="h3 fw-bold mb-3">15 années d'expériences créatives</h3>
-        <a routerLink="/portfolio" class="btn btn-pink rounded-pill px-4 mb-3">En voir plus</a>
+        <h3 class="h3 fw-bold mb-3">Découvrez mes réalisations</h3>
+        <a routerLink="/portfolio" class="btn btn-prune rounded-pill px-4 mb-3">Voir des exemples</a>
       </div>
       <div class="col-lg-8">
         <div class="row g-3">
-          <div class="col-6 col-md-4"><img src="assets/img/real1.jpg" alt="Projet 1" class="img-fluid rounded-3 shadow"></div>
-          <div class="col-6 col-md-4"><img src="assets/img/real2.jpg" alt="Projet 2" class="img-fluid rounded-3 shadow"></div>
-          <div class="col-6 col-md-4"><img src="assets/img/real3.jpg" alt="Projet 3" class="img-fluid rounded-3 shadow"></div>
+          @for (img of ['assets/img/real1.jpg', 'assets/img/real2.jpg', 'assets/img/real3.jpg']; track img) {
+            <div class="col-6 col-md-4"><img [src]="img" alt="Projet" class="img-fluid rounded-3 shadow"></div>
+          }
         </div>
       </div>
     </div>
@@ -68,19 +125,19 @@
         <img src="assets/img/waouw.jpg" alt="Projet Waouw" class="img-fluid rounded-4 shadow-lg">
       </div>
       <div class="col-lg-6">
-        <h3 class="h2 fw-bold mb-3">Ensemble déclenchons le Waouw !</h3>
-        <p class="fs-5">Chaque projet est avant tout une aventure humaine qui se construit ensemble.<br>Créer de jolis projets à destination des entreprises soucieuses d'améliorer leur image est notre travail depuis de nombreuses années.<br>C'est pourquoi nous prenons plaisir à concevoir les petits détails qui font souvent la différence dans la conception d'une communication professionnelle.</p>
+        <h3 class="h2 fw-bold mb-3">Ensemble, déclenchons le Waouw !</h3>
+        <p class="fs-5">Chaque projet est avant tout une aventure humaine qui se construit ensemble.<br>Créons des projets uniques pour valoriser votre entreprise et faire la différence dans votre communication professionnelle.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- CTA FINAL -->
-<section class="cta-final bg-pink text-white text-center py-5 position-relative">
+<section class="cta-final bg-prune text-white text-center py-5 position-relative">
   <svg class="cta-lines position-absolute top-0 start-0 w-100" height="80" viewBox="0 0 800 80" fill="none"><path d="M0,40 Q200,0 400,40 T800,40 Q600,80 400,40 T0,40" stroke="#fff" stroke-width="2" fill="none"/></svg>
   <div class="container position-relative" style="z-index:2;">
     <img src="assets/img/portrait.jpg" alt="Portrait" class="rounded-circle mb-3 shadow" width="72" height="72">
-    <h2 class="h2 fw-bold mb-3">Prêt à démarrer une nouvelle aventure ?</h2>
+    <h2 class="h2 fw-bold mb-3">Prêt à démarrer une nouvelle aventure ?</h2>
     <a routerLink="/contact" class="btn btn-light btn-lg rounded-pill px-5 fw-bold">Démarrons la conversation</a>
   </div>
 </section>
