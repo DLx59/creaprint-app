@@ -1,6 +1,6 @@
 import { Component, signal, computed, inject, Signal, WritableSignal } from '@angular/core';
 import { NgClass } from '@angular/common';
-import { ServicesService, Service } from '../../services/services.service';
+import { HomeService, Service } from '../../services/home.service';
 
 @Component({
   selector: 'app-services-carousel',
@@ -10,7 +10,7 @@ import { ServicesService, Service } from '../../services/services.service';
   styleUrls: ['./services-carousel.component.scss']
 })
 export class ServicesCarouselComponent {
-  private readonly servicesService: ServicesService = inject(ServicesService);
+  private readonly servicesService: HomeService = inject(HomeService);
   
   private readonly _activeIndex: WritableSignal<number> = signal<number>(0);
   

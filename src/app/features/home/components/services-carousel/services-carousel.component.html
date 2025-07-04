@@ -26,6 +26,11 @@
             class="card service-card mt-5 position-relative"
             [ngClass]="[getOffsetClass(offset), 'carousel-slide', 'h-100', 'border-0', 'rounded-4', 'p-4', 'bg-white']"
             (click)="goToSlide(idx)"
+            (keydown.enter)="goToSlide(idx)"
+            (keydown.space)="goToSlide(idx)"
+            tabindex="0"
+            role="button"
+            [attr.aria-label]="'Sélectionner le service ' + service.title"
           >
             <span class="service-price position-absolute top-0 end-0 m-3 px-2 py-1 rounded-pill fw-bold shadow-sm border border-1">
               {{ service.price }}

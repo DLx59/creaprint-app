@@ -1,4 +1,4 @@
-import { Injectable, signal, computed, Signal, WritableSignal } from '@angular/core';
+import { Injectable, signal, computed, Signal } from '@angular/core';
 
 export interface Service {
   readonly icon: string;
@@ -12,8 +12,8 @@ export interface Service {
 @Injectable({
   providedIn: 'root'
 })
-export class ServicesService {
-  private readonly _services: WritableSignal<readonly Service[]> = signal<readonly Service[]>([
+export class HomeService {
+  private readonly _services: Signal<readonly Service[]> = signal<readonly Service[]>([
     {
       icon: 'bi bi-brush',
       img: 'assets/service-logo.png',
@@ -81,7 +81,7 @@ export class ServicesService {
     }
   ]);
 
-  public readonly services: Signal<readonly Service[]> = this._services.asReadonly();
+  public readonly services: Signal<readonly Service[]> = this._services;
   public readonly totalServices: Signal<number> = computed((): number => this._services().length);
 
   public getServiceByIndex(index: number): Service | undefined {

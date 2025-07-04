@@ -267,3 +267,13 @@
     padding: 1rem 0.5rem 1rem 0.5rem;
   }
 }
+
+.home-hero-animate {
+  display: flex;
+  perspective: 1000px;
+  
+  span {
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+  }
+}
