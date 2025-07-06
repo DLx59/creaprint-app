@@ -1,0 +1,40 @@
+// Variables de couleurs personnalisées pour Créaprint
+// Ces variables overwrite le thème Bootstrap
+
+// Couleurs principales
+$prune: #6f42c1;
+$orange: #ff7f32;
+$black: #111;
+
+// Variables Bootstrap personnalisées
+$primary: $prune;
+$secondary: $orange;
+$dark: $black;
+
+// Import Bootstrap APRÈS avoir défini nos variables
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/mixins';
+
+// Couleurs de fond
+$body-bg: $black;
+$body-color: $white;
+
+// Couleurs des boutons
+$btn-primary-bg: $prune;
+$btn-primary-border: $prune;
+$btn-primary-color: $white;
+
+$btn-secondary-bg: $orange;
+$btn-secondary-border: $orange;
+$btn-secondary-color: $white;
+
+// Couleurs de texte
+$text-prune: $prune;
+$text-orange: $orange;
+$text-prune-light: lighten($prune, 20%);
+
+// Couleurs de fond
+$bg-prune: $prune;
+$bg-orange: $orange;
+$bg-black: $black; 

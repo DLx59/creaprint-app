@@ -20,13 +20,13 @@ export class HomeComponent implements AfterViewInit {
   constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
 
   @HostListener('window:scroll', ['$event'])
-  onWindowScroll() {
+  public onWindowScroll() {
     const scrollY = window.scrollY;
     const maxOffset = 100;
     this.featherOffset = Math.min(scrollY * 0.4, maxOffset);
   }
 
-  ngAfterViewInit(): void {
+  public ngAfterViewInit(): void {
     if (isPlatformBrowser(this.platformId)) {
       setTimeout(() => {
         this.animateAllHeroLetters();
@@ -58,7 +58,7 @@ export class HomeComponent implements AfterViewInit {
   private animateAllHeroLetters(): void {
     if (typeof document === 'undefined') return;
 
-    const allSpans: HTMLElement[] = Array.from(document.querySelectorAll('.home-hero-animate span'));
+    const allSpans: HTMLElement[] = Array.from(document.querySelectorAll('.home-hero-animate-1 span'));
 
     gsap.set(allSpans, {
       opacity: 0,
@@ -67,9 +67,25 @@ export class HomeComponent implements AfterViewInit {
     });
 
     const tl = gsap.timeline();
+    const gsapA = document.querySelector('.gsap-a') as HTMLElement;
+    const gsapN = document.querySelector('.gsap-n') as HTMLElement;
+    gsap.set(gsapA, {
+      opacity: 0,
+      scale: 1,
+      top: 43,
+      left: 584,
+      transformOrigin: "50% 50%"
+    });
+    gsap.set(gsapN, {
+      opacity: 0,
+      scale: 1,
+      top: 43,
+      left: 812,
+      transformOrigin: "50% 50%"
+    });
+    let anim: gsap.TweenVars = { opacity: 1, y: 0, scale: 1, duration: 0.2, ease: "power1.out" };
 
     allSpans.forEach((span: HTMLElement, idx: number) => {
-      let anim: gsap.TweenVars = { opacity: 1, y: 0, scale: 1, duration: 0.2, ease: "power1.out" };
       switch (span.className) {
         case 'c':
           anim = { opacity: 1, y: 0, scale: 1, rotationX: 360, color: "#ff7f32", duration: 1, ease: "back.out(2)" };
@@ -80,54 +96,64 @@ export class HomeComponent implements AfterViewInit {
           tl.fromTo(span, anim, { x: 0, y: 0, opacity: 1, scaleX: -1, color: "#6f42c1", duration: 0.5, ease: "elastic" });
           tl.to(span, { scaleX: 1, duration: 0.35, ease: "power2.inOut" }, "+=0.1");
           break;
-        case 'e':
+        case 'e': {
           anim = { opacity: 1, x: 0, y: 0, scale: 1, color: "#00b894", duration: 0.5, ease: "sine.out" };
           tl.fromTo(span, { x: 0, y: -30, opacity: 0 }, anim, "-=1");
-          break;
-        case 'gsap-a':
-          anim = { opacity: 0, x: 0, y: 50, scale: 0.1 };
-          tl.fromTo(span, anim, { opacity: 1, scale: 1, duration: 0.8, ease: "bounce.out(0.5)" }, "-=0.5");
-          tl.to(span, { rotation: 360, duration: 2, ease: "none", repeat: -1, transformOrigin: "50% 50%" }, "-=0.8");
+
+          tl.to(gsapA, { opacity: 1, scale: 1, duration: 0.8, ease: "bounce.out" }, "-=0.5");
+          tl.to(gsapA, { rotation: 360, duration: 1.3, ease: "none", repeat: -1, transformOrigin: "50% 50%" }, "-=0.8");
           tl.addLabel('afterGsapA');
           break;
-        case 'a':
-          const gsapA = allSpans[idx - 1];
-          anim = { opacity: 0, x: -55, y: 100, scale: 0.1, color: "#fdcb6e" };
+        }
+        case 'a': {
+          anim = { opacity: 0, x: 0, y: 100, scale: 0.1, color: "#fdcb6e" };
           tl.fromTo(span, anim, {
-            opacity: 1, scale: 1, x: -67, y: 0, duration: 0.7, ease: "power3.out",
+            opacity: 1,
+            scale: 1,
+            x: 0,
+            y: 0,
+            duration: 0.7,
+            ease: "power3.out",
             onStart: () => {
-              if (gsapA && gsapA.classList.contains('gsap-a')) {
+              if (gsapA) {
                 gsap.to(gsapA, {
                   y: -200,
                   opacity: 0,
                   scale: 0.8,
                   duration: 0.2,
                   ease: "back.in(2)",
+                  onComplete: () => {
+                    gsapA.style.visibility = 'hidden';
+                    tl.to(gsapN, {
+                      opacity: 1,
+                      scale: 1,
+                      duration: 1,
+                      ease: "power3.out"
+                    }, "afterGsapA-=0.25");
+                    tl.to(gsapN, {
+                      rotation: 360,
+                      duration: 1.2,
+                      repeat: -1,
+                      ease: "none",
+                      transformOrigin: "50% 50%"
+                    }, "<");
+                  }
                 });
               }
             }
           }, "-=0.8");
           break;
+        }
         case 'p':
-          anim = { x: -67, y: -200, opacity: 0, }
-          tl.fromTo(span, anim, { x: -67, y: 0, opacity: 1, color: "#0984e3", duration: 0.5, ease: "elastic" });
-          break;
-        case 'gsap-n':
-          anim = { opacity: 0, x: 30, y: 50, scale: 0.1 };
-          tl.fromTo(
-            span,
-            anim,
-            { opacity: 1, scale: 1.5, duration: 0.8, ease: "bounce.out(0.5)" },
-            "afterGsapA-=0.75"
-          );
-          tl.to(span, { rotation: 360, duration: 2, ease: "none", repeat: -1, transformOrigin: "50% 50%" }, "-=0.8");
+          anim = { x: 0, y: -200, opacity: 0, }
+          tl.fromTo(span, anim, { x: 0, y: 0, opacity: 1, color: "#0984e3", duration: 0.5, ease: "elastic" });
           break;
         case 'r2': {
           anim = {
             opacity: 0,
             rotationX: 150,
             y: 30,
-            x: -135,
+            x: 0,
             color: "#fdcb6e",
             transformOrigin: "bottom center"
           };
@@ -138,7 +164,7 @@ export class HomeComponent implements AfterViewInit {
               opacity: 1,
               rotationX: 0,
               y: 0,
-              x: -135,
+              x: 0,
               duration: 0.7,
               ease: "expo.out"
             },
@@ -148,17 +174,16 @@ export class HomeComponent implements AfterViewInit {
         }
         case 'i':
           anim = { x: -300, y: -300, rotate: 90, opacity: 0, }
-          tl.fromTo(span, anim, { x: -135, y: 7, scale: 0.25, rotate: 0, opacity: 1, color: "#00b894", duration: 0.75, ease: "power4" });
+          tl.fromTo(span, anim, { x: 0, y: 7, scale: 0.25, rotate: 0, opacity: 1, color: "#00b894", duration: 0.75, ease: "power4" });
           tl.to(span, { scale: 1, duration: 0.5, y: 0, ease: "power2.out" }, "-=0.1");
           break;
         case 'n': {
-          const gsapN = allSpans[idx - 3];
           anim = { x: -180, y: 0, opacity: 0, clipPath: 'inset(0 100% 0 0)' };
           tl.fromTo(
             span,
             anim,
             {
-              x: -135,
+              x: 0,
               y: 0,
               opacity: 1,
               color: "#636e72",
@@ -169,7 +194,7 @@ export class HomeComponent implements AfterViewInit {
                 if (gsapN && gsapN.classList.contains('gsap-n')) {
                   const progress = this['totalProgress']();
                   const startX = 30;
-                  const endX = 110;
+                  const endX = 80;
                   const currentX = startX + (endX - startX) * progress;
                   gsap.set(gsapN, { x: currentX });
                 }
@@ -179,9 +204,8 @@ export class HomeComponent implements AfterViewInit {
           break;
         }
         case 't':
-          const gsapN = allSpans[idx - 4];
-          anim = { x: -110, y: -300, opacity: 0, rotation: 90 }
-          tl.fromTo(span, anim, { x: -110, y: 0, opacity: 1, color: "#fd79a8", duration: 0.5, ease: "back.out(1.7)", });
+          anim = { x: 20, y: -300, opacity: 0, rotation: 90 }
+          tl.fromTo(span, anim, { x: 20, y: 0, opacity: 1, color: "#fd79a8", duration: 0.5, ease: "back.out(1.7)", });
           if (gsapN && gsapN.classList.contains('gsap-n')) {
             tl.to(
               gsapN,
@@ -190,75 +214,25 @@ export class HomeComponent implements AfterViewInit {
                 scale: 1.1,
                 opacity: 0,
                 duration: 0.20,
-                ease: "back.in"
+                ease: "back.in",
+                onComplete: () => {
+                  setTimeout(() => {
+                    if (gsapN) {
+                      gsapN.style.visibility = 'hidden';
+                    }
+                  }, 250);
+                }
               },
               "-=0.35"
             );
           }
-          tl.to(span, { rotation: 0, duration: 0.5, x: -135, ease: "back.out(1.7)" });
-          break;
-        case 'r3':
-        case 'r4':
-          break;
-        case 'e2':
-        case 'e3':
-        case 'e4':
-        case 'e5':
-        case 'e6':
-        case 'e7':
-        case 'e8':
-        case 'e9':
-          break;
-        case 'p2':
-          break;
-        case 'i2':
-        case 'i3':
-        case 'i4':
-          break;
-        case 'n2':
-        case 'n3':
-          break;
-        case 'o':
-          anim = { opacity: 1, y: 0, scale: 1, rotation: 0, rotationX: 0, rotationY: 0, duration: 0.5, ease: "expo.out" };
-          break;
-        case 't2':
-        case 't3':
-        case 't4':
-        case 't5':
-          break;
-        case 'v':
-        case 'v2':
-          anim = { opacity: 1, y: 0, scale: 1, rotation: 0, rotationX: 0, rotationY: 0, duration: 0.1, ease: "expo.out" };
-          break;
-        case 's':
-          anim = { opacity: 1, y: 0, scale: 1, rotation: 0, rotationX: 0, rotationY: 0, duration: 0.1, ease: "power2.out" };
-          break;
-        case 'u':
-          anim = { opacity: 1, y: 0, scale: 1, rotation: 0, rotationX: 0, rotationY: 0, duration: 0.1, ease: "power2.out" };
-          break;
-        case 'l':
-        case 'l2':
-          anim = { opacity: 1, y: 0, scale: 1, rotation: 0, rotationX: 0, rotationY: 0, duration: 0.1, ease: "power2.out" };
-          break;
-        case 'x':
-          anim = { opacity: 1, y: 0, scale: 1, rotation: 0, rotationX: 0, rotationY: 0, duration: 0.1, ease: "power2.out" };
-          break;
-        case 'd':
-          anim = { opacity: 1, y: 0, scale: 1, rotation: 0, rotationX: 0, rotationY: 0, duration: 0.1, ease: "power2.out" };
-          break;
-        case 'virg':
-          anim = { opacity: 1, y: 0, scale: 1, rotation: 0, rotationX: 0, rotationY: 0, color: "#6f42c1", duration: 0.1, ease: "power2.out" };
-          break;
-        case 'espace':
-        case 'espace2':
-        case 'espace3':
-        case 'espace4':
-        case 'espace5':
-          anim = { opacity: 1, y: 0, scale: 1, rotation: 0, rotationX: 0, rotationY: 0, duration: 0.1 };
+          tl.to(span, { rotation: 0, duration: 0.5, x: 0, ease: "back.out(1.7)" });
           break;
         default:
           tl.to(span, anim);
       }
     });
+
+
   }
 }

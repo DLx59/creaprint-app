@@ -1,5 +1,7 @@
+@import 'variables';
+
 .services-carousel-section {
-  background-color: #6f42c1;
+  background-color: $prune;
 
   .services-thumbs {
     display: flex;
@@ -33,9 +35,9 @@
     width: 48px;
     height: 48px;
     background: #fff;
-    color: #6f42c1;
+    color: $prune;
     border: none;
-    box-shadow: 0 2px 12px #6f42c133;
+    box-shadow: 0 2px 12px rgba($prune, 0.2);
     transition: background 0.2s, color 0.2s;
     display: flex;
     align-items: center;
@@ -50,7 +52,7 @@
     }
     
     &:hover {
-      background: #ff7f32;
+      background: $orange;
       color: #fff;
     }
   }
@@ -80,7 +82,7 @@
     
     &.carousel-center {
       z-index: 2;
-      box-shadow: 0 8px 40px #6f42c144, 0 2px 12px #6f42c133;
+      box-shadow: 0 8px 40px rgba($prune, 0.27), 0 2px 12px rgba($prune, 0.2);
     }
     
     &.carousel-adjacent {
@@ -119,31 +121,31 @@
   }
 
   .btn-orange {
-    background-color: #ff7f32;
+    background-color: $orange;
     color: #fff;
     border: none;
     transition: background 0.2s, color 0.2s;
     
     &:hover,
     &:focus {
-      background-color: #e96a1b;
+      background-color: darken($orange, 10%);
       color: #fff;
     }
     
     &:active {
-      background-color: #c95a13;
+      background-color: darken($orange, 20%);
       color: #fff;
     }
   }
 
   .bg-orange {
-    background-color: #ff7f32 !important;
+    background-color: $orange !important;
     color: #fff !important;
   }
 
   .service-price {
     background: rgba(255,255,255,0.85);
-    color: #6f42c1;
+    color: $prune;
     z-index: 2;
     letter-spacing: 0.01em;
     pointer-events: none;

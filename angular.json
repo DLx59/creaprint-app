@@ -24,6 +24,11 @@
               "zone.js"
             ],
             "tsConfig": "tsconfig.app.json",
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/styles"
+              ]
+            },
             "inlineStyleLanguage": "scss",
             "assets": [
               {
@@ -95,6 +100,11 @@
             ],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/styles"
+              ]
+            },
             "assets": [
               {
                 "glob": "**/*",

@@ -1,5 +1,4 @@
 .main-header {
-  background: rgba(17,17,17,0.98) !important;
   box-shadow: 0 2px 16px #6f42c122;
   .navbar-brand {
     font-family: 'Montserrat', 'Inter', Arial, sans-serif;
@@ -51,7 +50,7 @@
     outline: none;
     box-shadow: 0 0 0 2px #6f42c155;
   }
-  .collapse.bg-black {
+  .collapse.bg-dark {
     background: #111 !important;
     border-radius: 0 0 1rem 1rem;
     box-shadow: 0 8px 32px #6f42c122;

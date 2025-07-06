@@ -1,8 +1,40 @@
-@import 'bootstrap/scss/functions';
-@import 'bootstrap/scss/variables';
-@import 'bootstrap/scss/mixins';
+@import 'variables';
 
-body, .bg-black {
-    background: #111 !important;
+body{
+    background: $dark !important;
     color: $white;
+}
+
+// Classes utilitaires pour nos couleurs
+.text-prune {
+    color: $prune !important;
+}
+
+.text-orange {
+    color: $orange !important;
+}
+
+.text-prune-light {
+    color: $text-prune-light !important;
+}
+
+.bg-prune {
+    background-color: $prune !important;
+}
+
+.bg-orange {
+    background-color: $orange !important;
+}
+
+// Bouton orange personnalisé
+.btn-orange {
+    background-color: $orange !important;
+    border-color: $orange !important;
+    color: $white !important;
+    
+    &:hover {
+        background-color: darken($orange, 10%) !important;
+        border-color: darken($orange, 10%) !important;
+        color: $white !important;
+    }
 }
