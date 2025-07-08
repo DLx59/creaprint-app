@@ -1,53 +1,44 @@
-import { Component, signal, computed, inject, Signal, WritableSignal } from '@angular/core';
-import { NgClass } from '@angular/common';
-import { HomeService, Service } from '../../services/home.service';
+import {AfterViewInit, Component, ElementRef, inject, Signal, ViewChild, ViewChildren} from '@angular/core';
+import {HomeService, Service} from '../../services/home.service';
+import {gsap} from 'gsap';
+import {ScrollTrigger} from 'gsap/ScrollTrigger';
+import {NgOptimizedImage} from '@angular/common';
 
 @Component({
   selector: 'app-services-carousel',
   standalone: true,
-  imports: [NgClass],
+  imports: [
+    NgOptimizedImage
+  ],
   templateUrl: './services-carousel.component.html',
   styleUrls: ['./services-carousel.component.scss']
 })
-export class ServicesCarouselComponent {
+export class ServicesCarouselComponent implements AfterViewInit {
+  @ViewChildren('panel') public readonly panelsRef!: Array<ElementRef<HTMLElement>>
+  @ViewChild('panelsWrapper') panelsWrapperRef!: ElementRef<HTMLElement>;
+
   private readonly servicesService: HomeService = inject(HomeService);
-  
-  private readonly _activeIndex: WritableSignal<number> = signal<number>(0);
-  
-  public readonly activeIndex: Signal<number> = this._activeIndex.asReadonly();
   public readonly services: Signal<readonly Service[]> = this.servicesService.services;
-  public readonly totalServices: Signal<number> = this.servicesService.totalServices;
 
-  public readonly visibleSlides: Signal<(Service | undefined)[]> = computed((): (Service | undefined)[] => {
-    const totalServices: number = this.totalServices();
-    const currentIndex: number = this._activeIndex();
-    return [
-      this.servicesService.getServiceByIndex((currentIndex - 1 + totalServices) % totalServices),
-      this.servicesService.getServiceByIndex(currentIndex),
-      this.servicesService.getServiceByIndex((currentIndex + 1) % totalServices)
-    ];
-  });
-
-  public getVisibleIndex(offset: number): number {
-    const totalServices: number = this.totalServices();
-    return (this._activeIndex() + offset + totalServices) % totalServices;
+  constructor() {
+    gsap.registerPlugin(ScrollTrigger);
   }
 
-  public next(): void {
-    const totalServices: number = this.totalServices();
-    this._activeIndex.update((index: number): number => (index + 1) % totalServices);
-  }
-  
-  public prev(): void {
-    const totalServices: number = this.totalServices();
-    this._activeIndex.update((index: number): number => (index - 1 + totalServices) % totalServices);
-  }
-
-  public goToSlide(index: number): void {
-    this._activeIndex.set(index);
-  }
-
-  public getOffsetClass(offset: number): string {
-    return offset === 0 ? 'carousel-center' : 'carousel-adjacent';
+  public ngAfterViewInit() {
+    const panels = this.panelsRef.map(ref => ref.nativeElement);
+    const wrapper = this.panelsWrapperRef.nativeElement;
+    wrapper.style.width = `${panels.length * 100}vw`;
+    gsap.to(panels, {
+      xPercent: -100 * (panels.length - 1),
+      ease: "none",
+      scrollTrigger: {
+        trigger: wrapper,
+        pin: true,
+        scrub: 0.1,
+        end: () => "+=" + (wrapper.offsetWidth / 3),
+        snap: 1 / (panels.length - 1),
+        markers: true
+      }
+    });
   }
 }

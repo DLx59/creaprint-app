@@ -1,67 +1,26 @@
-<section class="services-carousel-section py-5">
-  <div class="container">
-    <h2 class="h2 fw-bold text-center text-white mb-4">À chaque besoin, son expertise</h2>
-    
-    <div class="services-thumbs">
-      @for (service of services(); track service.title) {
-        <button type="button"
-          class="btn btn-sm px-3 py-2 rounded-pill fw-bold"
-          [ngClass]="{'btn-orange': activeIndex() === $index, 'btn-light': activeIndex() !== $index}"
-          (click)="goToSlide($index)">
-          {{ service.title }}
-        </button>
-      }
+<section class="services-carousel-section py-4">
+  <div class="panels-wrapper" #panelsWrapper>
+    <div #panel class="panel d-flex flex-column justify-content-center align-items-center">
+      <h2 class="h2 fw-bold text-center text-white mb-4">À chaque besoin, son expertise</h2>
+      <h3 class="text-center">Continuez de scroll pour voir mes services :D</h3>
     </div>
-    
-    <div class="carousel-viewport">
-      <button class="btn btn-light rounded-circle carousel-arrow carousel-arrow-left shadow" (click)="prev()">
-        <i class="bi bi-chevron-left fs-3"></i>
-      </button>
-      
-      <div class="carousel-track">
-        @for (offset of [-1,0,1]; track offset) {
-          @let idx = getVisibleIndex(offset);
-          @let service = services()[idx];
-          <div
-            class="card service-card mt-5 position-relative"
-            [ngClass]="[getOffsetClass(offset), 'carousel-slide', 'h-100', 'border-0', 'rounded-4', 'p-4', 'bg-white']"
-            (click)="goToSlide(idx)"
-            (keydown.enter)="goToSlide(idx)"
-            (keydown.space)="goToSlide(idx)"
-            tabindex="0"
-            role="button"
-            [attr.aria-label]="'Sélectionner le service ' + service.title"
-          >
-            <span class="service-price position-absolute top-0 end-0 m-3 px-2 py-1 rounded-pill fw-bold shadow-sm border border-1">
-              {{ service.price }}
-            </span>
-            
-            <div class="d-flex align-items-center mb-3 w-100">
-              <i [class]="service.icon + ' fs-2 me-2 text-primary'" aria-hidden="true"></i>
-              <h3 class="h4 fw-bold mb-0 text-dark">{{ service.title }}</h3>
-            </div>
-            
-            @if (offset === 0) {
-              <div class="mb-2 text-dark" [innerHTML]="service.desc"></div>
-              <ul class="service-details list-unstyled mb-3">
-                @for (point of service.points ?? []; track point) {
-                  <li class="mb-1">• {{ point }}</li>
-                }
-              </ul>
-            }
-            
-            <img [src]="service.img" alt="Service Image" class="service-image">
-            
-            @if (offset === 0) {
-              <button class="btn btn-orange w-100 mt-auto text-white">Demander un devis</button>
-            }
+    @for (service of services(); track service.title) {
+      <div #panel class="panel d-flex flex-column justify-content-center align-items-center">
+        <div class="card p-4">
+          <div class="d-flex align-items-center mb-3 w-100">
+            <i [class]="service.icon + ' fs-2 me-2 text-primary'" aria-hidden="true"></i>
+            <h3 class="h4 fw-bold mb-0 text-dark">{{ service.title }}</h3>
           </div>
-        }
+          <div class="mb-2 text-dark" [innerHTML]="service.desc"></div>
+          <ul class="service-details list-unstyled mb-3">
+            @for (point of service.points ?? []; track point) {
+              <li class="mb-1">• {{ point }}</li>
+            }
+          </ul>
+          <img [src]="service.img" alt="Service Image" class="service-image">
+          <button class="btn btn-orange w-100 mt-auto text-white">Demander un devis</button>
+        </div>
       </div>
-      
-      <button class="btn btn-light rounded-circle carousel-arrow carousel-arrow-right shadow" (click)="next()">
-        <i class="bi bi-chevron-right fs-3"></i>
-      </button>
-    </div>
+    }
   </div>
-</section> 
+</section>

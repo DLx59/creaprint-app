@@ -1,9 +1,9 @@
 import { Component, HostListener, OnInit, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { ServicesCarouselComponent } from '../../features/home/components/services-carousel/services-carousel.component';
 import { inject } from '@angular/core';
 import { HeroGsapService } from './hero-gsap.service';
+import { ServicesCarouselComponent } from '../../features/home/components/services-carousel/services-carousel.component';
 
 @Component({
   selector: 'app-home',

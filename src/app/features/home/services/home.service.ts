@@ -92,4 +92,4 @@ export class HomeService {
   public getTotalServices(): number {
     return this._services().length;
   }
-} 
+}

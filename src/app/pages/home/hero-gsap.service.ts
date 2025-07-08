@@ -12,8 +12,7 @@ export class HeroGsapService {
    * Initializes the service and registers GSAP plugins.
    */
   constructor() {
-    gsap.registerPlugin(Draggable);
-    gsap.registerPlugin(SplitText);
+    gsap.registerPlugin(Draggable, SplitText);
   }
 
   /**
@@ -40,8 +39,8 @@ export class HeroGsapService {
     const tl: gsap.core.Timeline = gsap.timeline();
     const gsapA: HTMLElement | null = document.querySelector('.gsap-a');
     const gsapN: HTMLElement | null = document.querySelector('.gsap-n');
-    gsap.set(gsapA, { opacity: 0, scale: 1, top: 55, left: 584, transformOrigin: '50% 50%' });
-    gsap.set(gsapN, { opacity: 0, scale: 1, top: 55, left: 795, transformOrigin: '50% 50%' });
+    gsap.set(gsapA, { opacity: 0, scale: 1, top: -45, left: 584, transformOrigin: '50% 50%' });
+    gsap.set(gsapN, { opacity: 0, scale: 1, top: -45, left: 795, transformOrigin: '50% 50%' });
     let anim: gsap.TweenVars = { opacity: 1, y: 0, scale: 1, duration: 0.2, ease: 'power1.out' };
 
     allSpans.forEach((span: HTMLElement) => {
