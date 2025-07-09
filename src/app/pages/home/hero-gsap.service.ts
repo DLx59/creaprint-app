@@ -28,7 +28,7 @@ export class HeroGsapService {
     gsap.set(splitSubtitle2.lines, { opacity: 0, y: 50, scale: 1 });
 
     const featherElement: HTMLElement | null = document.querySelector('#feather-abs');
-    gsap.set(featherElement, { opacity: 0, y: 50, scale: 1 });
+    gsap.set(featherElement, { opacity: 0, y: -100, scale: 1 });
 
     const heroBtn: HTMLElement | null = document.querySelector('.hero-btn');
     gsap.set(heroBtn, { opacity: 0, y: 0, scale: 0, transformOrigin: '50% 50%' });
@@ -201,7 +201,7 @@ export class HeroGsapService {
       this._animateSubtitle2(splitSubtitle2);
       gsap.to(featherElement, {
         opacity: 1,
-        y: 0,
+        y: -100,
         scale: 1,
         duration: 0.5,
         ease: 'power1.out'
