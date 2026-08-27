@@ -1,7 +1,7 @@
-import { Component, inject, effect } from '@angular/core';
+import { Component, inject, effect, DOCUMENT } from '@angular/core';
 import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { CommonModule, DOCUMENT } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './features/shared/components/header/header.component';
 import { FooterComponent } from './features/shared/components/footer/footer.component';
 
