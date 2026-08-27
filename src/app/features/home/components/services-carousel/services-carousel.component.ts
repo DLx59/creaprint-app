@@ -15,6 +15,13 @@ import {isPlatformBrowser, NgOptimizedImage} from '@angular/common';
   styleUrls: ['./services-carousel.component.scss']
 })
 export class ServicesCarouselComponent implements AfterViewInit {
+  private static readonly CARD_SPACING_RATIO = 0.58;
+  private static readonly SCALE_STEP = 0.22;
+  private static readonly MIN_SCALE = 0.6;
+  private static readonly OPACITY_STEP = 0.5;
+  private static readonly MIN_OPACITY = 0.12;
+  private static readonly SCROLL_DISTANCE_PER_CARD = 0.6;
+
   @ViewChildren('panel') public readonly panelsRef!: ElementRef<HTMLElement>[];
   @ViewChild('panelsWrapper') panelsWrapperRef!: ElementRef<HTMLElement>;
 
@@ -29,19 +36,32 @@ export class ServicesCarouselComponent implements AfterViewInit {
 
     gsap.registerPlugin(ScrollTrigger);
 
-    const panels = this.panelsRef.map(ref => ref.nativeElement);
+    const cards = this.panelsRef.map(ref => ref.nativeElement);
     const wrapper = this.panelsWrapperRef.nativeElement;
-    wrapper.style.width = `${panels.length * 100}vw`;
-    gsap.to(panels, {
-      xPercent: -100 * (panels.length - 1),
-      ease: "none",
-      scrollTrigger: {
-        trigger: wrapper,
-        pin: true,
-        scrub: 0.1,
-        end: () => "+=" + (wrapper.offsetWidth / 3),
-        snap: 1 / (panels.length - 1)
-      }
+    const lastIndex = cards.length - 1;
+    const cardStep = cards[0].getBoundingClientRect().width * ServicesCarouselComponent.CARD_SPACING_RATIO;
+
+    const renderDeck = (progress: number): void => {
+      const activeIndex = progress * lastIndex;
+      cards.forEach((card: HTMLElement, i: number) => {
+        const distance = i - activeIndex;
+        const absDistance = Math.abs(distance);
+        const scale = Math.max(ServicesCarouselComponent.MIN_SCALE, 1 - absDistance * ServicesCarouselComponent.SCALE_STEP);
+        const opacity = Math.max(ServicesCarouselComponent.MIN_OPACITY, 1 - absDistance * ServicesCarouselComponent.OPACITY_STEP);
+        gsap.set(card, { x: distance * cardStep, scale, opacity, zIndex: Math.round(100 - absDistance * 10) });
+        card.classList.toggle('is-active', Math.round(activeIndex) === i);
+      });
+    };
+
+    renderDeck(0);
+
+    ScrollTrigger.create({
+      trigger: wrapper,
+      pin: true,
+      scrub: 0.4,
+      end: () => '+=' + lastIndex * window.innerHeight * ServicesCarouselComponent.SCROLL_DISTANCE_PER_CARD,
+      snap: 1 / lastIndex,
+      onUpdate: self => renderDeck(self.progress)
     });
   }
 }

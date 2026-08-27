@@ -1,11 +1,12 @@
-<section class="services-carousel-section py-4">
-  <div class="panels-wrapper" #panelsWrapper>
-    <div #panel class="panel d-flex flex-column justify-content-center align-items-center">
-      <h2 class="h2 fw-bold text-center text-white mb-4">À chaque besoin, son expertise</h2>
-      <h3 class="text-center">Continuez de scroll pour voir mes services :D</h3>
-    </div>
+<section class="services-carousel-section" #panelsWrapper>
+  <div class="carousel-heading text-center text-white">
+    <h2 class="h2 fw-bold mb-2">À chaque besoin, son expertise</h2>
+    <h3 class="fw-normal">Continuez de scroll pour voir mes services :D</h3>
+  </div>
+
+  <div class="cards-deck">
     @for (service of services(); track service.title) {
-      <div #panel class="panel d-flex flex-column justify-content-center align-items-center">
+      <div #panel class="deck-card">
         <div class="card p-4">
           <div class="d-flex align-items-center mb-3 w-100">
             <i [class]="service.icon + ' fs-2 me-2 text-primary'" aria-hidden="true"></i>
