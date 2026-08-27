@@ -1,33 +1,48 @@
+@import 'variables';
+
 .main-footer {
-  color: #fff;
-  border-top: 2px solid #222;
+  color: $white;
+  border-top: 2px solid $surface-2;
+
   .footer-logo-dot {
     display: inline-block;
     width: 18px;
     height: 18px;
-    background: #6f42c1;
+    background: linear-gradient(135deg, $prune, $orange);
     border-radius: 50%;
     margin-bottom: 6px;
-    box-shadow: 0 2px 8px #6f42c155;
+    box-shadow: 0 2px 8px rgba($prune, 0.33);
   }
+
   .footer-link {
-    color: #fff;
+    color: $white;
     text-decoration: none;
     margin: 0 0.3rem;
     transition: color 0.2s;
     font-weight: 500;
+
+    &:hover {
+      color: $prune-light;
+      text-decoration: underline;
+    }
   }
-  .footer-link:hover {
-    color: #6f42c1;
-    text-decoration: underline;
-  }
-  .small, .text-light-50 {
-    color: #bbb !important;
+
+  .small,
+  .text-light-50 {
+    color: rgba($white, 0.65) !important;
     font-size: 0.98rem;
   }
+
   @media (max-width: 600px) {
     padding: 2rem 0.5rem !important;
-    .fw-bold.fs-5 { font-size: 1.1rem; }
-    .footer-logo-dot { width: 14px; height: 14px; }
+
+    .fw-bold.fs-5 {
+      font-size: 1.1rem;
+    }
+
+    .footer-logo-dot {
+      width: 14px;
+      height: 14px;
+    }
   }
 }

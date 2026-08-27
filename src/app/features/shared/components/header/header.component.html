@@ -6,19 +6,28 @@
     <nav class="d-none d-lg-flex align-items-center gap-4">
       <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link text-white">Accueil</a>
       <a routerLink="/services" routerLinkActive="active" class="nav-link text-white">Services</a>
+      <a routerLink="/portfolio" routerLinkActive="active" class="nav-link text-white">Réalisations</a>
       <a routerLink="/contact" routerLinkActive="active" class="nav-link text-white">Contact</a>
-      <a routerLink="/contact" class="btn btn-pink rounded-pill px-4 ms-3">Contact direct</a>
+      <a routerLink="/contact" class="btn btn-prune rounded-pill px-4 ms-3">Contact direct</a>
     </nav>
-    <button class="navbar-toggler d-lg-none btn btn-outline-light border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavMobile" aria-controls="navbarNavMobile" aria-expanded="false" aria-label="Menu">
+    <button
+      class="navbar-toggler d-lg-none btn btn-outline-light border-0"
+      type="button"
+      [attr.aria-expanded]="mobileMenuOpen()"
+      aria-controls="navbarNavMobile"
+      aria-label="Menu"
+      (click)="toggleMobileMenu()"
+    >
       <i class="bi bi-list display-5"></i>
     </button>
   </div>
-  <div class="collapse bg-dark d-lg-none" id="navbarNavMobile">
+  <div class="collapse bg-dark d-lg-none" [class.show]="mobileMenuOpen()" id="navbarNavMobile">
     <nav class="d-flex flex-column align-items-center gap-3 py-3">
-      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link text-white">Accueil</a>
-      <a routerLink="/services" routerLinkActive="active" class="nav-link text-white">Services</a>
-      <a routerLink="/contact" routerLinkActive="active" class="nav-link text-white">Contact</a>
-      <a routerLink="/contact" class="btn btn-pink rounded-pill px-4">Contact direct</a>
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link text-white" (click)="closeMobileMenu()">Accueil</a>
+      <a routerLink="/services" routerLinkActive="active" class="nav-link text-white" (click)="closeMobileMenu()">Services</a>
+      <a routerLink="/portfolio" routerLinkActive="active" class="nav-link text-white" (click)="closeMobileMenu()">Réalisations</a>
+      <a routerLink="/contact" routerLinkActive="active" class="nav-link text-white" (click)="closeMobileMenu()">Contact</a>
+      <a routerLink="/contact" class="btn btn-prune rounded-pill px-4" (click)="closeMobileMenu()">Contact direct</a>
     </nav>
   </div>
 </header>
