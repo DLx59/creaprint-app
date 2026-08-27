@@ -1,28 +1,72 @@
-<section class="contact py-5 bg-light">
+<section class="contact bg-dark text-white py-7">
   <div class="container">
-    <h1 class="display-5 fw-bold text-center mb-4">Contactez-moi</h1>
+    <h1 class="display-5 fw-bold text-center mb-2">Contactez-moi</h1>
+    <p class="fs-5 text-prune-light text-center mb-5">Un projet en tête ? Discutons-en.</p>
+
     <div class="row justify-content-center">
       <div class="col-lg-7">
-        <form>
-          <div class="mb-3">
-            <label for="name" class="form-label">Nom</label>
-            <input type="text" class="form-control" id="name" placeholder="Votre nom" required>
-          </div>
-          <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" placeholder="Votre email" required>
-          </div>
-          <div class="mb-3">
-            <label for="message" class="form-label">Message</label>
-            <textarea class="form-control" id="message" rows="5" placeholder="Votre message" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary px-4">Envoyer</button>
-        </form>
-        <div class="mt-4 text-center">
+        <div class="contact-card">
+          @if (submitted()) {
+            <div class="alert alert-success" role="status">
+              Merci, votre demande a bien été enregistrée. Je reviens vers vous rapidement.
+            </div>
+          }
+
+          <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+            <div class="mb-3">
+              <label for="nom" class="form-label">Nom</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nom"
+                formControlName="nom"
+                placeholder="Votre nom"
+                [class.is-invalid]="form.controls.nom.invalid && form.controls.nom.touched"
+              />
+              @if (form.controls.nom.invalid && form.controls.nom.touched) {
+                <div class="invalid-feedback">Merci d'indiquer votre nom (2 caractères minimum).</div>
+              }
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                formControlName="email"
+                placeholder="Votre email"
+                [class.is-invalid]="form.controls.email.invalid && form.controls.email.touched"
+              />
+              @if (form.controls.email.invalid && form.controls.email.touched) {
+                <div class="invalid-feedback">Merci d'indiquer une adresse email valide.</div>
+              }
+            </div>
+
+            <div class="mb-3">
+              <label for="message" class="form-label">Message</label>
+              <textarea
+                class="form-control"
+                id="message"
+                formControlName="message"
+                rows="5"
+                placeholder="Votre message"
+                [class.is-invalid]="form.controls.message.invalid && form.controls.message.touched"
+              ></textarea>
+              @if (form.controls.message.invalid && form.controls.message.touched) {
+                <div class="invalid-feedback">Votre message doit faire au moins 10 caractères.</div>
+              }
+            </div>
+
+            <button type="submit" class="btn btn-orange rounded-pill px-4">Envoyer</button>
+          </form>
+        </div>
+
+        <div class="mt-5 text-center contact-info">
           <p class="mb-1 fw-semibold">Florence Vandoorne</p>
-          <p class="mb-1">creaprint&#64;skynet.be</p>
-          <p class="mb-1">+32 (0)473 75 31 37</p>
-          <p>Bd des Déportés 67A, 7730 Estaimpuis, Belgique</p>
+          <p class="mb-1"><i class="bi bi-envelope me-2" aria-hidden="true"></i>creaprint&#64;skynet.be</p>
+          <p class="mb-1"><i class="bi bi-telephone me-2" aria-hidden="true"></i>+32 (0)473 75 31 37</p>
+          <p><i class="bi bi-geo-alt me-2" aria-hidden="true"></i>Bd des Déportés 67A, 7730 Estaimpuis, Belgique</p>
         </div>
       </div>
     </div>

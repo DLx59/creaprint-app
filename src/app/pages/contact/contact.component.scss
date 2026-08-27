@@ -1,0 +1,13 @@
+@import 'variables';
+
+.contact {
+  background: linear-gradient(160deg, $black 0%, $surface-1 100%);
+}
+
+.contact-card {
+  @include surface-card(2rem);
+}
+
+.contact-info {
+  color: rgba($white, 0.75);
+}
