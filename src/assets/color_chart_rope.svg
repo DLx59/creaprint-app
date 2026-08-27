@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 194.88 511.85">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: #6f42c1;
+      }
+
+      .cls-3 {
+        fill: #fff;
+      }
+
+      .cls-4 {
+        isolation: isolate;
+      }
+
+      .cls-5 {
+        fill: #ff7f32;
+      }
+
+      .cls-6 {
+        fill: #d6d6d6;
+      }
+
+      .cls-7 {
+        fill: #a37be4;
+      }
+
+      .cls-8 {
+        fill: #dedede;
+        mix-blend-mode: multiply;
+      }
+
+      .cls-9 {
+        fill: #363e69;
+      }
+
+      .cls-2 {
+        stroke: #6f42c1;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 2px;
+      }
+    </style>
+  </defs>
+  <g class="cls-4">
+    <g id="Calque_2" data-name="Calque 2">
+      <g id="_Ñëîé_1" data-name="Ñëîé 1">
+        <path class="cls-6" d="M.48,473.63l56.18-68.51,27.61-33.66,2.08-2.54c.76-.93,2.11-1.06,3.02-.31l26.57,21.79c.92.75,1.06,2.11.31,3.02l-16.59,20.22-29.46,35.93-39.82,48.57c-.75.92-2.11,1.06-3.02.31L.79,476.65c-.92-.75-1.05-2.1-.31-3.02Z"/>
+        <rect class="cls-5" x="16.55" y="462.71" width="16.09" height="24.04" rx="2.01" ry="2.01" transform="translate(-358.12 192.76) rotate(-50.65)"/>
+        <rect class="cls-1" x="50.71" y="421.03" width="16.09" height="24.04" rx="2.01" ry="2.01" transform="translate(-313.37 203.91) rotate(-50.65)"/>
+        <rect class="cls-7" x="33.63" y="441.87" width="16.09" height="24.04" rx="2.01" ry="2.01" transform="translate(-335.75 198.34) rotate(-50.65)"/>
+        <rect class="cls-9" x="67.79" y="400.19" width="16.09" height="24.04" rx="2.01" ry="2.01" transform="translate(-290.99 209.46) rotate(-50.65)"/>
+        <path class="cls-8" d="M56.66,405.11l27.61-33.66.26-.08c1.14-.34,2.34.3,2.69,1.43l12.43,40.83-29.46,35.93-2.56-8.39-4.54-14.96h0s-6.43-21.09-6.43-21.09Z"/>
+        <path class="cls-6" d="M54.37,378.09l26.93-8.2,5.93-1.81c1.14-.34,2.34.3,2.69,1.43l21.82,71.63,17.64,57.91c.34,1.14-.29,2.33-1.43,2.68l-32.86,10.02c-1.14.34-2.34-.3-2.69-1.44l-39.46-129.55c-.35-1.13.29-2.33,1.43-2.68Z"/>
+        <rect class="cls-9" x="94.68" y="482.84" width="24.04" height="16.09" rx="2.01" ry="2.01" transform="translate(-138.46 52.42) rotate(-16.95)"/>
+        <rect class="cls-5" x="78.96" y="431.29" width="24.04" height="16.09" rx="2.01" ry="2.01" transform="translate(-124.1 45.59) rotate(-16.94)"/>
+        <rect class="cls-1" x="86.82" y="457.07" width="24.04" height="16.09" rx="2.01" ry="2.01" transform="translate(-131.28 49.01) rotate(-16.95)"/>
+        <rect class="cls-7" x="71.11" y="405.52" width="24.04" height="16.09" rx="2.01" ry="2.01" transform="translate(-116.89 42.17) rotate(-16.94)"/>
+        <path class="cls-8" d="M59.96,395.91l21.34-26.02,5.93-1.81c1.14-.34,2.34.3,2.69,1.43l21.82,71.63-51.48-42.21c-.92-.75-1.06-2.11-.3-3.03Z"/>
+        <path class="cls-6" d="M86.34,368.89l-21.78,26.57c-.75.92-.62,2.27.3,3.02l104.73,85.87c.92.75,2.27.62,3.03-.3l21.78-26.57c.75-.92.62-2.27-.3-3.02l-104.73-85.87c-.92-.75-2.27-.62-3.03.3Z"/>
+        <rect class="cls-7" x="158.66" y="452.2" width="24.04" height="16.09" rx="2.01" ry="2.01" transform="translate(-293.45 300.44) rotate(-50.65)"/>
+        <rect class="cls-1" x="116.98" y="418.04" width="24.04" height="16.09" rx="2.01" ry="2.01" transform="translate(-282.28 255.69) rotate(-50.65)"/>
+        <rect class="cls-5" x="137.82" y="435.12" width="24.04" height="16.09" rx="2.01" ry="2.01" transform="translate(-287.87 278.07) rotate(-50.65)"/>
+        <rect class="cls-9" x="96.14" y="400.96" width="24.04" height="16.09" rx="2.01" ry="2.01" transform="translate(-276.68 233.29) rotate(-50.65)"/>
+        <path class="cls-8" d="M92.54,376.97c-2.02-1.66-5.01-1.37-6.66.66s-1.36,5.01.66,6.66,5.01,1.36,6.66-.66,1.36-5-.66-6.66Z"/>
+        <g>
+          <path class="cls-3" d="M91.95,377.68c-.7-.58-1.55-.84-2.39-.85v.26s0-.26,0-.26c-1.11,0-2.21.45-2.96,1.37-1.33,1.63-1.1,4.03.53,5.36,1.63,1.33,4.03,1.1,5.36-.53,1.33-1.62,1.1-4.02-.53-5.36Z"/>
+          <line class="cls-2" x1="86.84" y1="1" x2="89.56" y2="376.84"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

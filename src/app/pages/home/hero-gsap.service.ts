@@ -39,8 +39,10 @@ export class HeroGsapService {
     const tl: gsap.core.Timeline = gsap.timeline();
     const gsapA: HTMLElement | null = document.querySelector('.gsap-a');
     const gsapN: HTMLElement | null = document.querySelector('.gsap-n');
+    const colorChart: HTMLElement | null = document.querySelector('.gsap-color-chart');
     gsap.set(gsapA, { opacity: 0, scale: 1, top: -45, left: 584, transformOrigin: '50% 50%' });
     gsap.set(gsapN, { opacity: 0, scale: 1, top: -45, left: 795, transformOrigin: '50% 50%' });
+    gsap.set(colorChart, { opacity: 1, scale: 1, top: -1050, left: 100, transformOrigin: '50% 50%' });
     let anim: gsap.TweenVars = { opacity: 1, y: 0, scale: 1, duration: 0.2, ease: 'power1.out' };
 
     allSpans.forEach((span: HTMLElement) => {
@@ -204,7 +206,73 @@ export class HeroGsapService {
         y: -100,
         scale: 1,
         duration: 0.5,
-        ease: 'power1.out'
+        ease: 'power1.out',
+        onComplete: () => {
+          // Place d'abord le SVG à la position finale
+          gsap.set(colorChart, {
+            top: -150,
+            left: 100,
+            scale: 1.5
+          });
+
+          // Oscillation pendulaire vivante, arrêt à 20°
+          gsap.fromTo(
+            colorChart,
+            {
+              rotation: -30,
+              x: -40,
+              y: -120,
+              transformOrigin: "50% 0%"
+            },
+            {
+              rotation: 25,
+              x: 35,
+              y: 0,
+              duration: 1.1,
+              ease: "power2.out",
+              onComplete: () => {
+                // Oscillation 1
+                gsap.to(colorChart, {
+                  rotation: -12,
+                  x: -18,
+                  y: -18,
+                  duration: 0.8,
+                  ease: "power2.inOut",
+                  onComplete: () => {
+                    // Oscillation 2
+                    gsap.to(colorChart, {
+                      rotation: 10,
+                      x: 8,
+                      y: 0,
+                      duration: 0.6,
+                      ease: "power2.inOut",
+                      onComplete: () => {
+                        // Oscillation 3
+                        gsap.to(colorChart, {
+                          rotation: -4,
+                          x: -3,
+                          y: -4,
+                          duration: 0.4,
+                          ease: "power2.inOut",
+                          onComplete: () => {
+                            // Retour à la position d'équilibre (20°)
+                            gsap.to(colorChart, {
+                              rotation: 20,
+                              x: 0,
+                              y: 0,
+                              duration: 0.3,
+                              ease: "power2.out"
+                            });
+                          }
+                        });
+                      }
+                    });
+                  }
+                });
+              }
+            }
+          );
+        }
       });
     }, [], '+=1.2');
     tl.call(() => {

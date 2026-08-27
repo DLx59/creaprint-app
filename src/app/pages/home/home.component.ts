@@ -18,16 +18,16 @@ export class HomeComponent implements AfterViewInit {
   private readonly _platformId: Object = inject(PLATFORM_ID);
   private readonly _heroGsapService: HeroGsapService = inject(HeroGsapService);
 
-  /**
-   * Handles the window scroll event to update the feather offset.
-   * @param event The scroll event.
-   */
-  @HostListener('window:scroll', ['$event'])
-  public onWindowScroll(event: Event): void {
-    const scrollY: number = window.scrollY;
-    const maxOffset: number = 100;
-    this.featherOffset = Math.min(scrollY * 0.4, maxOffset);
-  }
+  // /**
+  //  * Handles the window scroll event to update the feather offset.
+  //  * @param event The scroll event.
+  //  */
+  // @HostListener('window:scroll', ['$event'])
+  // public onWindowScroll(event: Event): void {
+  //   const scrollY: number = window.scrollY;
+  //   const maxOffset: number = 100;
+  //   this.featherOffset = Math.min(scrollY * 0.4, maxOffset);
+  // }
 
   /**
    * Angular lifecycle hook. Triggers hero animations and feather drag after view initialization.

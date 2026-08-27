@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 158.98 139.73">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #6f42c1;
+      }
+
+      .cls-2 {
+        isolation: isolate;
+      }
+
+      .cls-3 {
+        fill: #ff7f32;
+      }
+
+      .cls-4 {
+        fill: #d6d6d6;
+      }
+
+      .cls-5 {
+        fill: #a37be4;
+      }
+
+      .cls-6 {
+        fill: #dedede;
+        mix-blend-mode: multiply;
+      }
+
+      .cls-7 {
+        fill: #363e69;
+      }
+    </style>
+  </defs>
+  <g class="cls-2">
+    <g id="Calque_2" data-name="Calque 2">
+      <g id="_Ñëîé_1" data-name="Ñëîé 1">
+        <path class="cls-4" d="M139.74,2.15l-.02,88.61v43.54s-.01,3.28-.01,3.28c0,1.2-.96,2.15-2.14,2.15h-34.36c-1.19-.01-2.15-.97-2.15-2.15v-26.16s.02-46.46.02-46.46V2.15c.01-1.19.97-2.15,2.15-2.15h34.36c1.19.01,2.14.97,2.15,2.15Z"/>
+        <rect class="cls-3" x="108.37" y="8.54" width="24.04" height="16.09" rx="2.01" ry="2.01"/>
+        <rect class="cls-1" x="108.37" y="62.43" width="24.04" height="16.09" rx="2.01" ry="2.01"/>
+        <rect class="cls-5" x="108.37" y="35.49" width="24.04" height="16.09" rx="2.01" ry="2.01"/>
+        <rect class="cls-7" x="108.37" y="89.38" width="24.04" height="16.09" rx="2.01" ry="2.01"/>
+        <path class="cls-6" d="M139.71,90.76v43.54s-.16.23-.16.23c-.66.99-2,1.25-2.99.6l-35.5-23.7v-46.46s7.31,4.87,7.31,4.87l13,8.69h.01l18.34,12.24Z"/>
+        <path class="cls-4" d="M158.62,110.21l-15.63,23.42-3.44,5.16c-.66.99-2,1.25-2.99.6l-62.29-41.57-50.36-33.61c-.99-.66-1.25-1.99-.6-2.98l19.07-28.58c.66-.99,2-1.25,2.99-.59l112.64,75.17c.99.65,1.25,1.99.6,2.98Z"/>
+        <rect class="cls-7" x="34.62" y="48.1" width="24.04" height="16.09" rx="2.01" ry="2.01" transform="translate(-25.95 63.78) rotate(-56.29)"/>
+        <rect class="cls-3" x="79.45" y="78" width="24.04" height="16.09" rx="2.01" ry="2.01" transform="translate(-30.87 114.37) rotate(-56.28)"/>
+        <rect class="cls-1" x="57.04" y="63.05" width="24.04" height="16.09" rx="2.01" ry="2.01" transform="translate(-28.41 89.08) rotate(-56.29)"/>
+        <rect class="cls-5" x="101.87" y="92.95" width="24.04" height="16.09" rx="2.01" ry="2.01" transform="translate(-33.34 139.66) rotate(-56.28)"/>
+        <path class="cls-6" d="M143,99.97v33.65s-3.45,5.16-3.45,5.16c-.66.99-2,1.25-2.99.6l-62.29-41.57h66.57c1.19.01,2.15.97,2.15,2.16Z"/>
+        <path class="cls-4" d="M139.73,137.58v-34.35c0-1.19-.96-2.15-2.14-2.15l-135.43-.02c-1.19,0-2.15.96-2.15,2.15v34.36c0,1.19.96,2.15,2.14,2.15l135.43.02c1.19,0,2.15-.96,2.15-2.15Z"/>
+        <rect class="cls-5" x="8.54" y="108.38" width="16.09" height="24.04" rx="2.01" ry="2.01"/>
+        <rect class="cls-1" x="62.43" y="108.37" width="16.09" height="24.04" rx="2.01" ry="2.01"/>
+        <rect class="cls-3" x="35.48" y="108.37" width="16.09" height="24.04" rx="2.01" ry="2.01"/>
+        <rect class="cls-7" x="89.37" y="108.37" width="16.09" height="24.04" rx="2.01" ry="2.01"/>
+      </g>
+    </g>
+  </g>
+</svg>
