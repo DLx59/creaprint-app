@@ -1,8 +1,8 @@
-import {AfterViewInit, Component, ElementRef, inject, Signal, ViewChild, ViewChildren, ChangeDetectionStrategy} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, inject, PLATFORM_ID, Signal, ViewChild, ViewChildren, ChangeDetectionStrategy} from '@angular/core';
 import {HomeService, Service} from '../../services/home.service';
 import {gsap} from 'gsap';
 import {ScrollTrigger} from 'gsap/ScrollTrigger';
-import {NgOptimizedImage} from '@angular/common';
+import {isPlatformBrowser, NgOptimizedImage} from '@angular/common';
 
 @Component({
   selector: 'app-services-carousel',
@@ -19,13 +19,16 @@ export class ServicesCarouselComponent implements AfterViewInit {
   @ViewChild('panelsWrapper') panelsWrapperRef!: ElementRef<HTMLElement>;
 
   private readonly servicesService: HomeService = inject(HomeService);
+  private readonly platformId: object = inject(PLATFORM_ID);
   public readonly services: Signal<readonly Service[]> = this.servicesService.services;
 
-  constructor() {
-    gsap.registerPlugin(ScrollTrigger);
-  }
+  public ngAfterViewInit(): void {
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
 
-  public ngAfterViewInit() {
+    gsap.registerPlugin(ScrollTrigger);
+
     const panels = this.panelsRef.map(ref => ref.nativeElement);
     const wrapper = this.panelsWrapperRef.nativeElement;
     wrapper.style.width = `${panels.length * 100}vw`;
@@ -37,8 +40,7 @@ export class ServicesCarouselComponent implements AfterViewInit {
         pin: true,
         scrub: 0.1,
         end: () => "+=" + (wrapper.offsetWidth / 3),
-        snap: 1 / (panels.length - 1),
-        markers: true
+        snap: 1 / (panels.length - 1)
       }
     });
   }
