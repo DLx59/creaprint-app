@@ -153,11 +153,11 @@ export class HeroGsapService {
               clipPath: 'inset(0 0% 0 0)',
               duration: 0.4,
               ease: 'expo.out',
-              onUpdate: function () {
+              onUpdate: function (this: gsap.core.Tween) {
                 if (gsapN && gsapN.classList.contains('gsap-n')) {
-                  const progress: number = (this as any)['totalProgress']();
-                  const startX: number = 30;
-                  const endX: number = 80;
+                  const progress: number = this.totalProgress();
+                  const startX = 30;
+                  const endX = 80;
                   const currentX: number = startX + (endX - startX) * progress;
                   gsap.set(gsapN, { x: currentX });
                 }

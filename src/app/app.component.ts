@@ -1,4 +1,4 @@
-import { Component, inject, effect, DOCUMENT, ChangeDetectionStrategy } from '@angular/core';
+import { Component, inject, effect, signal, DOCUMENT, ChangeDetectionStrategy } from '@angular/core';
 import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { trigger, transition, style, animate } from '@angular/animations';
 
@@ -11,7 +11,7 @@ import { FooterComponent } from './features/shared/components/footer/footer.comp
   imports: [RouterOutlet, HeaderComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     trigger('fade', [
       transition(':enter', [
@@ -26,7 +26,7 @@ import { FooterComponent } from './features/shared/components/footer/footer.comp
 })
 export class AppComponent {
   title = 'creaprint';
-  showScrollTop = false;
+  readonly showScrollTop = signal(false);
   private router = inject(Router);
   private doc = inject(DOCUMENT);
   private isBrowser = typeof window !== 'undefined';
@@ -54,7 +54,7 @@ export class AppComponent {
     
     if (this.isBrowser) {
       window.addEventListener('scroll', () => {
-        this.showScrollTop = window.scrollY > 300;
+        this.showScrollTop.set(window.scrollY > 300);
       });
     }
   }

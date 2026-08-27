@@ -11,11 +11,11 @@ import {NgOptimizedImage} from '@angular/common';
     NgOptimizedImage
   ],
   templateUrl: './services-carousel.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./services-carousel.component.scss']
 })
 export class ServicesCarouselComponent implements AfterViewInit {
-  @ViewChildren('panel') public readonly panelsRef!: Array<ElementRef<HTMLElement>>
+  @ViewChildren('panel') public readonly panelsRef!: ElementRef<HTMLElement>[];
   @ViewChild('panelsWrapper') panelsWrapperRef!: ElementRef<HTMLElement>;
 
   private readonly servicesService: HomeService = inject(HomeService);

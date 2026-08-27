@@ -5,7 +5,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './contact.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: './contact.component.scss'
 })
 export class ContactComponent {}

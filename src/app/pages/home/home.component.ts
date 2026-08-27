@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit, AfterViewInit, Inject, PLATFORM_ID, ChangeDetectionStrategy } from '@angular/core';
+import { Component, AfterViewInit, PLATFORM_ID, ChangeDetectionStrategy } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { inject } from '@angular/core';
@@ -11,12 +11,12 @@ import { ServicesCarouselComponent } from '../../features/home/components/servic
   imports: [RouterLink, ServicesCarouselComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [HeroGsapService]
 })
 export class HomeComponent implements AfterViewInit {
-  public featherOffset: number = 0;
-  private readonly _platformId: Object = inject(PLATFORM_ID);
+  public featherOffset = 0;
+  private readonly _platformId: object = inject(PLATFORM_ID);
   private readonly _heroGsapService: HeroGsapService = inject(HeroGsapService);
 
   // /**
