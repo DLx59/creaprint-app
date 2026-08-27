@@ -1,4 +1,4 @@
-import { Component, inject, effect, DOCUMENT } from '@angular/core';
+import { Component, inject, effect, DOCUMENT, ChangeDetectionStrategy } from '@angular/core';
 import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { trigger, transition, style, animate } from '@angular/animations';
 
@@ -11,6 +11,7 @@ import { FooterComponent } from './features/shared/components/footer/footer.comp
   imports: [RouterOutlet, HeaderComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
   animations: [
     trigger('fade', [
       transition(':enter', [

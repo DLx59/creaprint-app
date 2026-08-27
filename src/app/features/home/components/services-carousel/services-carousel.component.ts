@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, inject, Signal, ViewChild, ViewChildren} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, inject, Signal, ViewChild, ViewChildren, ChangeDetectionStrategy} from '@angular/core';
 import {HomeService, Service} from '../../services/home.service';
 import {gsap} from 'gsap';
 import {ScrollTrigger} from 'gsap/ScrollTrigger';
@@ -11,6 +11,7 @@ import {NgOptimizedImage} from '@angular/common';
     NgOptimizedImage
   ],
   templateUrl: './services-carousel.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./services-carousel.component.scss']
 })
 export class ServicesCarouselComponent implements AfterViewInit {
