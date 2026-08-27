@@ -159,92 +159,65 @@
 <app-services-carousel></app-services-carousel>
 
 <!-- SLOGAN / MISE EN AVANT -->
-<section class="slogan py-3">
+<section class="slogan py-7 reveal" appReveal>
   <div class="container text-center">
-    <h2 class="h2 fw-bold mb-0">Mon savoir-faire et votre confiance, la clé de la réussite de vos projets !</h2>
+    <h2 class="h2 fw-bold mb-0">Mon savoir-faire et votre confiance, la clé de la réussite de vos projets !</h2>
     <p class="mb-0">Rapidité, modernité et efficacité au service de votre communication.</p>
   </div>
 </section>
 
 <!-- PRÉSENTATION / À PROPOS -->
-<section class="presentation py-5">
+<section class="presentation py-7 reveal" appReveal>
   <div class="container">
     <div class="row align-items-center">
       <div class="col-lg-7 mb-4 mb-lg-0">
         <h3 class="h3 fw-bold mb-3">À propos de Créaprint</h3>
-        <p>Fort de plus de 20 ans d'expérience – dont 5 ans en agence de publicité et 10 ans en imprimerie – je mets mon
+        <p>Fort de plus de 20 ans d'expérience, dont 5 ans en agence de publicité et 10 ans en imprimerie, je mets mon
           expertise à votre service pour tous vos projets de création graphique et web.</p>
         <p>Bénéficiez d'un accompagnement global, personnalisé et sur-mesure, que ce soit pour la conception de votre
           identité visuelle, la réalisation de supports imprimés ou la création de votre site internet.</p>
-        <p>Mes clients proviennent de secteurs variés : découvrez leurs réalisations et laissez-vous inspirer !</p>
+        <p>Mes clients proviennent de secteurs variés : découvrez leurs réalisations et laissez-vous inspirer !</p>
+        <div class="stats-row d-flex flex-wrap gap-3 mt-4">
+          <div class="stat-chip">
+            <span class="stat-number">20+</span>
+            <span class="stat-label">ans d'expérience</span>
+          </div>
+          <div class="stat-chip">
+            <span class="stat-number">5</span>
+            <span class="stat-label">ans en agence pub</span>
+          </div>
+          <div class="stat-chip">
+            <span class="stat-number">10</span>
+            <span class="stat-label">ans en imprimerie</span>
+          </div>
+        </div>
       </div>
       <div class="col-lg-5 text-center">
-        <img src="assets/img/portrait.jpg" alt="Portrait" class="rounded-circle shadow mb-3" width="120" height="120">
+        <app-media
+          class="d-inline-block portrait-media"
+          src="assets/img/portrait.jpg"
+          alt="Portrait"
+          label="Photo à venir"
+          icon="bi bi-person"
+          ratio="1 / 1"
+          shape="circle"
+        />
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- EXPERTISES / SERVICES -->
-<section class="expertises py-5">
-  <div class="container">
-    <h2 class="h2 fw-bold text-center mb-5">Nos services</h2>
-    <div class="row g-4 justify-content-center">
-      @for (expertise of [
-      {
-      icon: 'bi bi-brush',
-      title: 'Création de logo',
-      desc: 'Logos sur-mesure pour le web et l\'impression. Modernisation et amélioration de logos existants.',
-      price: 'À partir de 180 € HT'
-      },
-      {
-      icon: 'bi bi-megaphone',
-      title: 'Flyers, affiches & annonces presse',
-      desc: 'Conception de supports publicitaires impactants : flyers, affiches, annonces presse, roll-ups…',
-      price: 'À partir de 120 € HT'
-      },
-      {
-      icon: 'bi bi-box-seam',
-      title: 'Packaging',
-      desc: 'Création de boîtes, étuis, tubes, sachets, sets de table, lettrage vitrine et véhicule.',
-      price: 'À partir de 105 € HT'
-      },
-      {
-      icon: 'bi bi-journal-richtext',
-      title: 'Catalogues & magazines',
-      desc: 'De la création à la mise en page, fichiers HD prêts à imprimer.',
-      price: 'À partir de 50 € HT la page A4'
-      },
-      {
-      icon: 'bi bi-globe2',
-      title: 'Site internet, référencement & newsletters',
-      desc: 'Création de sites web personnalisés, optimisés pour le référencement naturel.<br>Conception de newsletters
-      originales et prêtes à l\'envoi.',
-      price: 'À partir de 225 € HT la newsletter'
-      }
-      ]; track expertise.title) {
-      <div class="col-md-4 text-center">
-        <div class="icon-expertise mb-3"><i class="{{expertise.icon}} display-3 text-prune"></i></div>
-        <h3 class="h4 fw-bold mb-2">{{ expertise.title }}</h3>
-        <p [innerHTML]="expertise.desc"></p>
-        <span class="fw-bold">{{ expertise.price }}</span>
-      </div>
-      }
     </div>
   </div>
 </section>
 
 <!-- CTA / CONTACT -->
-<section class="cta-conv py-5">
+<section class="cta-conv py-7 reveal" appReveal>
   <div class="container text-center">
-    <h2 class="h2 fw-bold mb-0">Vous souhaitez donner un nouvel élan à votre communication ?</h2>
+    <h2 class="h2 fw-bold mb-0">Vous souhaitez donner un nouvel élan à votre communication ?</h2>
     <p class="mb-4">Contactez-moi pour discuter de votre projet et obtenir un devis personnalisé.</p>
     <a routerLink="/contact" class="btn btn-primary btn-lg rounded-pill px-5">Demander un devis</a>
   </div>
 </section>
 
 <!-- EXPERIENCE + RÉALISATIONS -->
-<section class="experience py-5">
+<section class="experience py-7 reveal" appReveal>
   <div class="container">
     <div class="row align-items-center mb-5">
       <div class="col-lg-4 mb-4 mb-lg-0">
@@ -254,17 +227,26 @@
       <div class="col-lg-8">
         <div class="row g-3">
           @for (img of ['assets/img/real1.jpg', 'assets/img/real2.jpg', 'assets/img/real3.jpg']; track img) {
-          <div class="col-6 col-md-4"><img [src]="img" alt="Projet" class="img-fluid rounded-3 shadow"></div>
+            <div class="col-6 col-md-4">
+              <app-media class="d-block gallery-media" [src]="img" alt="Projet" label="Photo à venir" ratio="1 / 1" shape="rounded" />
+            </div>
           }
         </div>
       </div>
     </div>
     <div class="row align-items-center">
       <div class="col-lg-6">
-        <img src="assets/img/waouw.jpg" alt="Projet Waouw" class="img-fluid rounded-4 shadow-lg">
+        <app-media
+          class="d-block waouw-media"
+          src="assets/img/waouw.jpg"
+          alt="Projet Waouw"
+          label="Photo à venir"
+          ratio="4 / 3"
+          shape="rounded"
+        />
       </div>
       <div class="col-lg-6">
-        <h3 class="h2 fw-bold mb-3">Ensemble, déclenchons le Waouw !</h3>
+        <h3 class="h2 fw-bold mb-3">Ensemble, déclenchons le Waouw !</h3>
         <p class="fs-5">Chaque projet est avant tout une aventure humaine qui se construit ensemble.<br>Créons des
           projets uniques pour valoriser votre entreprise et faire la différence dans votre communication
           professionnelle.</p>
@@ -274,13 +256,20 @@
 </section>
 
 <!-- CTA FINAL -->
-<section class="cta-final bg-prune text-white text-center py-5 position-relative">
+<section class="cta-final bg-prune text-white text-center py-7 position-relative reveal" appReveal>
   <svg class="cta-lines position-absolute top-0 start-0 w-100" height="80" viewBox="0 0 800 80" fill="none">
     <path d="M0,40 Q200,0 400,40 T800,40 Q600,80 400,40 T0,40" stroke="#fff" stroke-width="2" fill="none" />
   </svg>
   <div class="container position-relative" style="z-index:2;">
-    <img src="assets/img/portrait.jpg" alt="Portrait" class="rounded-circle mb-3 shadow" width="72" height="72">
-    <h2 class="h2 fw-bold mb-3">Prêt à démarrer une nouvelle aventure ?</h2>
+    <app-media
+      class="d-inline-block final-portrait-media"
+      src="assets/img/portrait.jpg"
+      alt="Portrait"
+      icon="bi bi-person"
+      ratio="1 / 1"
+      shape="circle"
+    />
+    <h2 class="h2 fw-bold mb-3 mt-3">Prêt à démarrer une nouvelle aventure ?</h2>
     <a routerLink="/contact" class="btn btn-light btn-lg rounded-pill px-5 fw-bold">Démarrons la conversation</a>
   </div>
 </section>

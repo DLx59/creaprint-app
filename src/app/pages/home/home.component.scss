@@ -115,3 +115,50 @@
 .home-hero-animate-2 {
   font-size: 3rem;
 }
+
+// ---------------------------------------------------------------------------
+// Sections hors hero (slogan, présentation, CTA, réalisations) — le bloc
+// ci-dessus ne doit pas être modifié, celui-ci peut évoluer librement.
+// ---------------------------------------------------------------------------
+
+.stats-row {
+  .stat-chip {
+    @include surface-card(1rem 1.5rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 120px;
+
+    .stat-number {
+      font-family: $font-stack-heading;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: $orange;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: rgba($white, 0.7);
+      text-align: center;
+    }
+  }
+}
+
+.portrait-media,
+.final-portrait-media {
+  width: 200px;
+}
+
+.final-portrait-media {
+  width: 72px;
+}
+
+.gallery-media,
+.waouw-media {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $box-shadow;
+  }
+}

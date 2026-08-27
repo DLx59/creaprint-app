@@ -4,11 +4,13 @@ import { RouterLink } from '@angular/router';
 import { inject } from '@angular/core';
 import { HeroGsapService } from './hero-gsap.service';
 import { ServicesCarouselComponent } from '../../features/home/components/services-carousel/services-carousel.component';
+import { MediaComponent } from '../../features/shared/components/media/media.component';
+import { RevealOnScrollDirective } from '../../features/shared/directives/reveal-on-scroll.directive';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, ServicesCarouselComponent],
+  imports: [RouterLink, ServicesCarouselComponent, MediaComponent, RevealOnScrollDirective],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
