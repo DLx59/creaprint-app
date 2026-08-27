@@ -1,14 +1,14 @@
 import { Component, inject, effect, DOCUMENT } from '@angular/core';
 import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { CommonModule } from '@angular/common';
+
 import { HeaderComponent } from './features/shared/components/header/header.component';
 import { FooterComponent } from './features/shared/components/footer/footer.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, HeaderComponent, FooterComponent],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   animations: [
