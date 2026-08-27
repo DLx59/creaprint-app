@@ -1,40 +1,35 @@
 @import 'variables';
+// Compilation complète de Bootstrap avec nos surcharges (pattern "Option B" officiel).
+// Le double-import de functions/variables/maps/mixins qui suit (interne à ce fichier) est
+// sans danger : ces partials n'émettent aucun CSS et nos valeurs sont déjà non-défaut.
+// Ne pas "simplifier" cet import plus tard.
+@import 'bootstrap/scss/bootstrap';
 
-body{
-    background: $dark !important;
-    color: $white;
+body {
+  background: $dark !important;
+  color: $white;
 }
 
-// Classes utilitaires pour nos couleurs
-.text-prune {
-    color: $prune !important;
-}
-
-.text-orange {
-    color: $orange !important;
-}
-
+// Pas d'équivalent généré par Bootstrap pour cette teinte précise — conservée à la main.
 .text-prune-light {
-    color: $text-prune-light !important;
+  color: $text-prune-light !important;
 }
 
-.bg-prune {
-    background-color: $prune !important;
+// Garde-fou : empêche le changement de police global de décaler le texte animé du hero,
+// dont les SVG décoratifs sont positionnés en pixels par rapport au rendu système actuel.
+.hero,
+.hero * {
+  font-family: $font-stack-system !important;
 }
 
-.bg-orange {
-    background-color: $orange !important;
-}
+// Entrée en douceur au scroll — piloté par RevealOnScrollDirective ([appReveal]).
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 
-// Bouton orange personnalisé
-.btn-orange {
-    background-color: $orange !important;
-    border-color: $orange !important;
-    color: $white !important;
-    
-    &:hover {
-        background-color: darken($orange, 10%) !important;
-        border-color: darken($orange, 10%) !important;
-        color: $white !important;
-    }
+  &.is-visible {
+    opacity: 1;
+    transform: none;
+  }
 }

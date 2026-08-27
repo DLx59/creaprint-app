@@ -1,40 +1,69 @@
-// Variables de couleurs personnalisées pour Créaprint
-// Ces variables overwrite le thème Bootstrap
+// Variables de couleurs personnalisées pour Créaprint — surchargent le thème Bootstrap.
+// Compilation complète de Bootstrap : voir styles.scss (pattern officiel "Option B").
 
-// Couleurs principales
+@import 'bootstrap/scss/functions';
+@import 'fonts';
+
+// Couleurs principales — source de vérité
 $prune: #6f42c1;
 $orange: #ff7f32;
 $black: #111;
+$white: #fff;
 
-// Variables Bootstrap personnalisées
+// Teintes dérivées des deux couleurs de marque uniquement (pas de nouvelle teinte)
+$prune-dark: shade-color($prune, 30%);
+$prune-light: tint-color($prune, 35%);
+$orange-dark: shade-color($orange, 25%);
+$orange-light: tint-color($orange, 35%);
+$surface-1: #1b1b1f;
+$surface-2: #242429;
+$border-subtle: rgba($white, 0.08);
+
+// Conservé tel quel (même formule qu'avant) — référencé par la section hero (ne pas renommer/supprimer/changer la couleur)
+$text-prune-light: lighten($prune, 20%);
+
+// Surcharges Bootstrap (doivent précéder l'import de bootstrap/scss/variables)
 $primary: $prune;
 $secondary: $orange;
 $dark: $black;
-
-// Import Bootstrap APRÈS avoir défini nos variables
-@import 'bootstrap/scss/functions';
-@import 'bootstrap/scss/variables';
-@import 'bootstrap/scss/mixins';
-
-// Couleurs de fond
 $body-bg: $black;
 $body-color: $white;
+$link-color: $orange;
+$link-hover-color: $orange-light;
+$font-family-base: $font-stack-body;
+$headings-font-family: $font-stack-heading;
+$headings-font-weight: 700;
+$border-radius: 0.75rem;
+$border-radius-lg: 1rem;
+$border-radius-sm: 0.5rem;
+// Le composant Bootstrap .card (ex. le carrousel de services, contenu blanc + texte
+// foncé) doit rester clair explicitement — Bootstrap dérive $card-bg de $body-bg par
+// défaut, qui est notre noir de marque ; sans cette ligne le texte foncé du carrousel
+// deviendrait illisible. Nos propres cartes utilisent le mixin surface-card (fond
+// explicite), pas .card, donc cette valeur ne les concerne pas.
+$card-bg: $white;
+$box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.35);
+$box-shadow-sm: 0 0.25rem 1rem rgba(0, 0, 0, 0.25);
 
-// Couleurs des boutons
-$btn-primary-bg: $prune;
-$btn-primary-border: $prune;
-$btn-primary-color: $white;
+$custom-colors: (
+  'prune': $prune,
+  'orange': $orange,
+);
 
-$btn-secondary-bg: $orange;
-$btn-secondary-border: $orange;
-$btn-secondary-color: $white;
+@import 'bootstrap/scss/variables';
 
-// Couleurs de texte
-$text-prune: $prune;
-$text-orange: $orange;
-$text-prune-light: lighten($prune, 20%);
+$theme-colors: map-merge($theme-colors, $custom-colors);
 
-// Couleurs de fond
-$bg-prune: $prune;
-$bg-orange: $orange;
-$bg-black: $black; 
+// Rythme d'espacement plus généreux
+$spacers: map-merge(
+  $spacers,
+  (
+    6: $spacer * 4.5,
+    7: $spacer * 6,
+    8: $spacer * 8,
+  )
+);
+
+@import 'bootstrap/scss/maps';
+@import 'bootstrap/scss/mixins';
+@import 'mixins';

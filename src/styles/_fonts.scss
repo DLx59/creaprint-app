@@ -1,0 +1,12 @@
+@use 'sass:list';
+
+// Stack système Bootstrap par défaut — sert de garde-fou pour la section hero
+// (ne pas modifier : le texte animé du hero est calé en pixels sur ce rendu).
+$font-stack-system: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans',
+  'Liberation Sans', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+  'Noto Color Emoji';
+
+// join() flattens into a single comma list — a directly-nested list here would serialize to
+// invalid CSS (e.g. `"Inter", (system-ui, ...)`), silently dropping the whole declaration.
+$font-stack-body: list.join('Inter', $font-stack-system, $separator: comma);
+$font-stack-heading: list.join('Montserrat', $font-stack-system, $separator: comma);

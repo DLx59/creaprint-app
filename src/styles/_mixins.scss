@@ -1,0 +1,28 @@
+@mixin surface-card($padding: 2rem) {
+  background: $surface-1;
+  border: 1px solid $border-subtle;
+  border-radius: $border-radius-lg;
+  padding: $padding;
+  box-shadow: $box-shadow-sm;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+@mixin hover-lift {
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $box-shadow;
+    border-color: rgba($orange, 0.4);
+  }
+}
+
+@mixin section-padding($y: 6) {
+  padding-block: map-get($spacers, $y);
+}
+
+@mixin placeholder-surface($angle: 135deg) {
+  background: linear-gradient($angle, rgba($prune, 0.35), rgba($orange, 0.35)), $surface-2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba($white, 0.6);
+}
