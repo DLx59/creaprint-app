@@ -1,0 +1,34 @@
+@import 'variables';
+
+:host {
+  display: block;
+}
+
+.media-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.media-placeholder {
+  @include placeholder-surface;
+  width: 100%;
+  height: 100%;
+
+  .media-placeholder-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: center;
+    padding: 1rem;
+
+    i {
+      font-size: 2rem;
+    }
+
+    span {
+      font-size: 0.9rem;
+    }
+  }
+}

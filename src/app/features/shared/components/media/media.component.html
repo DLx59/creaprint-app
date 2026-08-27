@@ -1,0 +1,26 @@
+@if (hasError()) {
+  <div
+    class="media-placeholder"
+    [class.rounded-4]="shape() === 'rounded'"
+    [class.rounded-circle]="shape() === 'circle'"
+    [style.aspect-ratio]="ratio()"
+  >
+    <div class="media-placeholder-content">
+      <i [class]="icon()" aria-hidden="true"></i>
+      @if (label()) {
+        <span>{{ label() }}</span>
+      }
+    </div>
+  </div>
+} @else {
+  <img
+    [src]="src()"
+    [alt]="alt()"
+    [class.rounded-4]="shape() === 'rounded'"
+    [class.rounded-circle]="shape() === 'circle'"
+    [style.aspect-ratio]="ratio()"
+    class="media-image"
+    loading="lazy"
+    (error)="onError()"
+  />
+}
