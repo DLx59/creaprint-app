@@ -1,0 +1,17 @@
+@import 'variables';
+
+.portfolio-hero {
+  background: linear-gradient(160deg, $black 0%, $surface-1 100%);
+}
+
+.portfolio-media {
+  transition: transform 0.25s ease;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+}
+
+.portfolio-caption {
+  text-align: center;
+}

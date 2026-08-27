@@ -1,0 +1,52 @@
+<section class="portfolio-hero bg-dark text-white text-center py-7">
+  <div class="container">
+    <h1 class="display-5 fw-bold mb-3">Réalisations</h1>
+    <p class="fs-4 text-prune-light mb-0">
+      Un aperçu de projets menés pour des clients de secteurs variés.
+    </p>
+  </div>
+</section>
+
+<section class="portfolio-filters py-4">
+  <div class="container">
+    <div class="d-flex flex-wrap justify-content-center gap-2">
+      @for (category of categories; track category) {
+        <button
+          type="button"
+          class="btn rounded-pill px-4"
+          [class.btn-prune]="activeCategory() === category"
+          [class.btn-outline-prune]="activeCategory() !== category"
+          (click)="setCategory(category)"
+        >
+          {{ category }}
+        </button>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="portfolio-grid py-5">
+  <div class="container">
+    <div class="row g-4">
+      @for (item of filteredItems(); track item.id) {
+        <div class="col-6 col-md-4 col-lg-3 reveal" appReveal>
+          <app-media class="d-block portfolio-media" [src]="item.img" [alt]="item.title" [label]="item.title" ratio="1 / 1" shape="rounded" />
+          <div class="portfolio-caption mt-2">
+            <span class="fw-semibold">{{ item.title }}</span>
+            <span class="text-orange d-block small">{{ item.category }}</span>
+          </div>
+        </div>
+      } @empty {
+        <p class="text-center text-white-50">Aucune réalisation dans cette catégorie pour le moment.</p>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="portfolio-cta bg-prune text-white text-center py-7">
+  <div class="container">
+    <h2 class="h2 fw-bold mb-3">Votre projet mérite le même soin</h2>
+    <p class="fs-5 mb-4">Parlons de votre identité visuelle et de vos supports de communication.</p>
+    <a routerLink="/contact" class="btn btn-light btn-lg rounded-pill px-5 fw-bold">Démarrons la conversation</a>
+  </div>
+</section>

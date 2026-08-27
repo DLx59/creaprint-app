@@ -37,6 +37,7 @@ export class AppComponent {
         if (event instanceof NavigationEnd) {
           let pageTitle = 'Créaprint';
           if (event.urlAfterRedirects === '/services') pageTitle = 'Services | Créaprint';
+          else if (event.urlAfterRedirects === '/portfolio') pageTitle = 'Réalisations | Créaprint';
           else if (event.urlAfterRedirects === '/contact') pageTitle = 'Contact | Créaprint';
           else if (event.urlAfterRedirects === '/') pageTitle = 'Accueil | Créaprint';
           this.doc.title = pageTitle;
