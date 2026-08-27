@@ -1,0 +1,47 @@
+<section class="services-hero bg-dark text-white text-center py-7">
+  <div class="container">
+    <h1 class="display-5 fw-bold mb-3">Nos prestations</h1>
+    <p class="fs-4 text-prune-light mb-0">
+      Logo, packaging, print, web : une expertise sur-mesure pour chaque projet.
+    </p>
+  </div>
+</section>
+
+<section class="services-list py-7">
+  <div class="container">
+    @for (service of services(); track service.title; let i = $index) {
+      <div class="row align-items-center service-block reveal" appReveal [class.flex-row-reverse]="i % 2 === 1">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <img [ngSrc]="service.img" [priority]="i === 0" [alt]="service.title" width="600" height="450" class="img-fluid rounded-4 shadow-lg" />
+        </div>
+        <div class="col-lg-6" [class.text-lg-end]="i % 2 === 1">
+          <div class="d-flex align-items-center gap-2 mb-3" [class.flex-lg-row-reverse]="i % 2 === 1">
+            <i [class]="service.icon + ' fs-1 text-orange'" aria-hidden="true"></i>
+            <h2 class="h3 fw-bold mb-0">{{ service.title }}</h2>
+          </div>
+          <p class="fs-5" [innerHTML]="service.desc"></p>
+          <ul class="service-points list-unstyled">
+            @for (point of service.points ?? []; track point) {
+              <li>
+                <i class="bi bi-check-circle-fill text-prune" aria-hidden="true"></i>
+                {{ point }}
+              </li>
+            }
+          </ul>
+          <span class="price-badge">{{ service.price }}</span>
+          <div class="mt-4">
+            <a routerLink="/contact" class="btn btn-orange rounded-pill px-4">Demander un devis</a>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</section>
+
+<section class="services-cta bg-prune text-white text-center py-7">
+  <div class="container">
+    <h2 class="h2 fw-bold mb-3">Un projet en tête ?</h2>
+    <p class="fs-5 mb-4">Discutons-en et donnons vie à votre identité visuelle.</p>
+    <a routerLink="/contact" class="btn btn-light btn-lg rounded-pill px-5 fw-bold">Démarrons la conversation</a>
+  </div>
+</section>
